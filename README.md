@@ -7,14 +7,14 @@ This repository contains the set of Jupyter notebooks for **MATH 4/5388: Machine
 ---
 
 ## Jupyter Notebooks
-If you want to work directly with the source notebooks, they are located inside the ``notebooks'' folder of this repository.
+If you want to work directly with the source notebooks, they are located inside the "notebooks" folder of this repository.
 
 ---
 
 ## Educational Video Playlist
-🎥 **Watch the course videos here:** https://www.youtube.com/playlist?list=PLLeO8f6PhlKZghwrdaw2pJgMpTLcS_LpG 
+🎥 **Watch the course videos here:** [YouTube Playlist](<[INSERT_PLAYLIST_LINK_HERE](https://www.youtube.com/playlist?list=PLLeO8f6PhlKZghwrdaw2pJgMpTLcS_LpG)>)
 ---
 
 ## Acknowledgment & Contact
-These materials are developed by **Farhad Pourkamali, PhD**.  
-For any questions, please contact: **farhad.pourkamali@ucdenver.edu**
+These materials are developed by **Farhad Pourkamali, Ph.D.**  
+For any questions or inquiries, please contact: **<farhad.pourkamali@ucdenver.edu>**
