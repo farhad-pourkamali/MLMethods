@@ -12,7 +12,7 @@ If you want to work directly with the source notebooks, they are located inside 
 ---
 
 ## Educational Video Playlist
-🎥 **Watch the course videos here:** [YouTube Playlist](<[INSERT_PLAYLIST_LINK_HERE](https://www.youtube.com/playlist?list=PLLeO8f6PhlKZghwrdaw2pJgMpTLcS_LpG)>)
+🎥 **Watch the course videos here:** [YouTube Playlist](<[https://www.youtube.com/playlist?list=PLLeO8f6PhlKZghwrdaw2pJgMpTLcS_LpG]>)
 ---
 
 ## Acknowledgment & Contact
