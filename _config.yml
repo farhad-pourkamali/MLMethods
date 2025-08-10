@@ -3,12 +3,15 @@
 
 title: "MATH 4/5388: Machine Learning Methods"
 author: Farhad Pourkamali
-copyright: 
+copyright: "2025, Farhad Pourkamali"
 logo: logo.png
 only_build_toc_files: true
 
+# Do NOT execute notebooks on CI
 execute:
-  execute_notebooks: "off"   
+  execute_notebooks: "off"     # options: "off", "auto", "force", "cache"
+  allow_errors: false
+  exclude_patterns: []          # you can add files here later to skip specific ones
 
 repository:
   url: https://github.com/farhad-pourkamali/MLMethods
