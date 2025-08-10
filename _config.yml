@@ -1,0 +1,19 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: "MATH 4/5388: Machine Learning Methods"
+author: Farhad Pourkamali
+copyright: 
+logo: logo.png
+only_build_toc_files: true
+
+repository:
+  url: https://github.com/farhad-pourkamali/MLMethods
+  branch: main
+  path_to_book: .
+
+html:
+  use_repository_button: true
+  use_issues_button: true
+  use_edit_page_button: true
+

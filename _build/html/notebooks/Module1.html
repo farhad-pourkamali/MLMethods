@@ -1,0 +1,2050 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Machine Learning Landscape &#8212; MATH 4/5388: Machine Learning Methods</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Module1';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data Preparation and Validation Techniques" href="Module2.html" />
+    <link rel="prev" title="Welcome to MATH 4/5388 – Machine Learning Methods" href="../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="MATH 4/5388: Machine Learning Methods - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MATH 4/5388: Machine Learning Methods - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to MATH 4/5388 – Machine Learning Methods
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">The Machine Learning Landscape</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Module2.html">Data Preparation and Validation Techniques</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Module3.html">Parametric Regression Models</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Module4.html">Parametric Classification Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module5.html">Unsupervised Learning</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Module6-part1.html">Support Vector Machines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module6-part2.html">Decision Trees and Random Forests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module6-part3.html">Gradient Boosting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module7-part1.html">Mathematical Building Blocks of Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Module7-part2.html">Building Neural Networks in Keras</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/farhad-pourkamali/MLMethods" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/farhad-pourkamali/MLMethods/edit/main/./notebooks/Module1.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/farhad-pourkamali/MLMethods/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Module1.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/Module1.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Machine Learning Landscape</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">The Machine Learning Landscape</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-methods">Machine Learning Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-1-the-machine-learning-landscape">Module 1: The Machine Learning Landscape</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-farhad-pourkamali">Instructor: Farhad Pourkamali</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-machine-learning">1. Definition of Machine Learning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-machine-learning">Why Use Machine Learning?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-machine-learning">What Is Machine Learning?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#components-and-types-of-machine-learning">2. Components and Types of Machine Learning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-machine-learning">Components of Machine Learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-machine-learning">Types of Machine Learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-learning-making-predictions">Supervised Learning (Making Predictions)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-based-vs-instance-based-learning">Model-Based vs Instance-Based Learning</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-concepts-behind-machine-learning">3. Mathematical Concepts Behind Machine Learning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">Notation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-risk-minimization">Empirical Risk Minimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-zero-one-loss-for-classification-problems">Example: Zero-One Loss for Classification Problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-hinge-loss-for-classification-with-margin">Example: Hinge Loss (For Classification with Margin)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-experiment">Python Experiment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-workflow-for-machine-learning-models">General Workflow for Machine Learning Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalization">Generalization</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-concepts-for-machine-learning">4. Programming Concepts for Machine Learning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-oriented-programming-oop">Object-Oriented programming (OOP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">NumPy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product-or-inner-product">Dot product or inner product</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">Matrix multiplication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas">Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-reading">Recommended Reading</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="the-machine-learning-landscape">
+<h1>The Machine Learning Landscape<a class="headerlink" href="#the-machine-learning-landscape" title="Link to this heading">#</a></h1>
+<section id="machine-learning-methods">
+<h2>Machine Learning Methods<a class="headerlink" href="#machine-learning-methods" title="Link to this heading">#</a></h2>
+<section id="module-1-the-machine-learning-landscape">
+<h3>Module 1: The Machine Learning Landscape<a class="headerlink" href="#module-1-the-machine-learning-landscape" title="Link to this heading">#</a></h3>
+</section>
+<section id="instructor-farhad-pourkamali">
+<h3>Instructor: Farhad Pourkamali<a class="headerlink" href="#instructor-farhad-pourkamali" title="Link to this heading">#</a></h3>
+</section>
+<section id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h3>
+<hr style="border:2px solid gray">
+<ol class="arabic simple">
+<li><p>Definition of Machine Learning (<a class="reference external" href="https://youtu.be/ZvV0XTMlpJg">https://youtu.be/ZvV0XTMlpJg</a>)</p></li>
+<li><p>Components and Types of Machine Learning (<a class="reference external" href="https://youtu.be/VWSf9yjEseQ">https://youtu.be/VWSf9yjEseQ</a>)</p>
+<ul class="simple">
+<li><p>Components of Machine Learning:</p>
+<ul>
+<li><p>Data</p></li>
+<li><p>Models</p></li>
+<li><p>Training</p></li>
+<li><p>Evaluation</p></li>
+</ul>
+</li>
+<li><p>Categorization Based on Data Supervision:</p>
+<ul>
+<li><p>Supervised Learning</p></li>
+<li><p>Unsupervised Learning</p></li>
+<li><p>Semi-Supervised Learning</p></li>
+</ul>
+</li>
+<li><p>Categorization Based on Learning Strategy:</p>
+<ul>
+<li><p>Model-Based Learning</p></li>
+<li><p>Instance-Based Learning</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Mathematical Concepts Behind Machine Learning (<a class="reference external" href="https://youtu.be/fjWMBNU_Z0Y">https://youtu.be/fjWMBNU_Z0Y</a>)</p>
+<ul class="simple">
+<li><p>Probability and statistics, linear algebra,  optimization</p></li>
+</ul>
+</li>
+<li><p>Programming Concepts for Machine Learning (<a class="reference external" href="https://youtu.be/8aeGfeDNH3E">https://youtu.be/8aeGfeDNH3E</a>)</p>
+<ul class="simple">
+<li><p>Python Basics</p>
+<ul>
+<li><p>Variables, loops, conditional statements, and functions</p></li>
+</ul>
+</li>
+<li><p>Object-Oriented Programming (OOP)</p>
+<ul>
+<li><p>Classes: Blueprints for creating objects</p></li>
+<li><p>Objects: Instances of classes</p></li>
+<li><p>Attributes: Variables that store data within an object</p></li>
+<li><p>Methods: Define behaviors of an object</p></li>
+</ul>
+</li>
+<li><p>NumPy: <a class="reference external" href="https://numpy.org/doc/stable/index.html#">https://numpy.org/doc/stable/index.html#</a></p>
+<ul>
+<li><p>Core library for numerical computations</p></li>
+<li><p>Efficient array manipulations</p></li>
+</ul>
+</li>
+<li><p>Pandas: <a class="reference external" href="https://pandas.pydata.org/docs/index.html">https://pandas.pydata.org/docs/index.html</a></p>
+<ul>
+<li><p>Data manipulation and analysis</p></li>
+<li><p>Handling datasets and missing values</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="definition-of-machine-learning">
+<h1>1. Definition of Machine Learning<a class="headerlink" href="#definition-of-machine-learning" title="Link to this heading">#</a></h1>
+<section id="why-use-machine-learning">
+<h2>Why Use Machine Learning?<a class="headerlink" href="#why-use-machine-learning" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Let’s design a spam filtering system using traditional programming techniques</p>
+<ul>
+<li><p>Manually write rules to detect spam emails</p></li>
+<li><p>For example, look for specific keywords or phrases, such as “credit card” or “account number,” and flag emails containing these words as spam</p></li>
+<li><p>Requires a long list of complex rules that need constant updates as spammers adapt</p></li>
+</ul>
+</li>
+<li><p>A spam filter based on machine learning aims to automatically learn which words and phrases are good predictors or inputs</p>
+<ul>
+<li><p>The filter uses a <strong>supervised learning</strong> approach, where it is trained on a data set of <strong>labeled</strong> examples: emails marked as “spam” or “not spam”</p></li>
+<li><p>The model identifies patterns in the training data that predict the label</p></li>
+<li><p>No need to manually update rules</p></li>
+<li><p>Can learn and adjust as new types of spam emerge</p></li>
+<li><p>Learns subtle patterns and relationships in the data that humans may miss</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="what-is-machine-learning">
+<h2>What Is Machine Learning?<a class="headerlink" href="#what-is-machine-learning" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul>
+<li><p>Tom Mitchell’s definition of machine learning (<a class="reference external" href="https://www.cs.cmu.edu/~tom/">https://www.cs.cmu.edu/~tom/</a>):</p>
+<p><em>A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.</em></p>
+</li>
+<li><p>Application to spam email detection:</p>
+<ul class="simple">
+<li><p>Experience (E): The data set comprising emails labeled as “spam” or “not spam.” This labeled data serves as the training set, enabling the model to learn distinguishing features of spam emails.</p></li>
+<li><p>Task (T): Classifying incoming emails as either “spam” or “not spam.” This involves analyzing email content and metadata to make accurate classifications.</p></li>
+<li><p>Performance Measure (P): The accuracy of the email classifications, defined as the proportion of correctly identified emails (both spam and not spam) out of the total number of emails processed. Higher accuracy indicates better model performance.</p></li>
+</ul>
+</li>
+<li><p>Farhad Pourkamali’s definition of machine learning:</p>
+<p><em>Machine learning can be conceptualized as a teacher-student framework, where the teacher provides examples, training data, or feedback. The student, represented by the machine learning model, aims to learn patterns from this input and apply that knowledge to provide answers to new problems.</em></p>
+</li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="components-and-types-of-machine-learning">
+<h1>2. Components and Types of Machine Learning<a class="headerlink" href="#components-and-types-of-machine-learning" title="Link to this heading">#</a></h1>
+<img src="https://github.com/farhad-pourkamali/MATH4388Online/blob/main/images/types.png?raw=true" width=500><section id="components-of-machine-learning">
+<h2>Components of Machine Learning<a class="headerlink" href="#components-of-machine-learning" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Data</p>
+<ul>
+<li><p>The information used to teach and train the machine learning system, representing the raw material from which patterns and insights are derived.</p></li>
+<li><p>Examples include text, images, or numerical data sets.</p></li>
+</ul>
+</li>
+<li><p>Models</p>
+<ul>
+<li><p>Abstract algorithmic structures or mathematical representations designed to learn from data.</p></li>
+<li><p>Models do not inherently “know” or “learn” anything until trained. They provide a framework or set of rules (guidelines) to capture underlying patterns and relationships in the data.</p></li>
+</ul>
+</li>
+<li><p>Training</p>
+<ul>
+<li><p>The process of exposing the model to data, allowing it to adjust its internal parameters and learn relationships</p></li>
+</ul>
+</li>
+<li><p>Evaluation</p>
+<ul>
+<li><p>A systematic method of assessing the model’s performance on unseen data.</p></li>
+<li><p>Evaluation helps identify areas for potential improvement.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="types-of-machine-learning">
+<h2>Types of Machine Learning<a class="headerlink" href="#types-of-machine-learning" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Machine learning models can be categorized based on the <strong>level of supervision</strong> they receive during training. The level of supervision refers to the amount and type of labeled data to learn from.</p>
+<ul>
+<li><p>Supervised Learning</p>
+<ul>
+<li><p>Definition: Learning from labeled data sets where the input-output pairs are known, enabling the model to make predictions or classifications.</p></li>
+<li><p>Applications: Used in tasks like email spam detection and handwriting recognition.</p></li>
+</ul>
+</li>
+<li><p>Unsupervised Learning</p>
+<ul>
+<li><p>Definition: Learning from unlabeled data to identify inherent structures or patterns without predefined labels.</p></li>
+<li><p>Applications: Employed in clustering customers based on purchasing behavior and reducing data dimensionality.</p></li>
+<li><p>Generative models often fall under unsupervised learning  as they learn patterns in data without explicit labels, used for image generation, text synthesis, or audio creation.</p></li>
+</ul>
+</li>
+<li><p>Semi-Supervised Learning</p>
+<ul>
+<li><p>Definition: Combines a small amount of labeled data with a large amount of unlabeled data during training, bridging supervised and unsupervised learning.</p></li>
+<li><p>Applications: In many real-world cases, we have a limited budget for labeling new samples, as manually labeling data can be costly or resource-intensive.</p>
+<ul>
+<li><p>Semi-supervised learning makes efficient use of this budget by extracting as much information as possible from unlabeled data while relying on minimal labeled examples.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="supervised-learning-making-predictions">
+<h2>Supervised Learning (Making Predictions)<a class="headerlink" href="#supervised-learning-making-predictions" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Supervised learning can be divided into two main types based on the nature of the label:</p>
+<ul>
+<li><p>Regression: Predicts a continuous output variable (e.g., a real number).</p></li>
+<li><p>Classification: Predicts a discrete output variable (e.g., a category or class label).</p></li>
+</ul>
+</li>
+<li><p>The difference in target types directly impacts:</p>
+<ul>
+<li><p>The way models process data.</p></li>
+<li><p>How they output predictions.</p></li>
+<li><p>How error is measured during training.</p></li>
+</ul>
+</li>
+<li><p>When dealing with categorical targets, there is no obvious notion of distance between classes.</p></li>
+</ul>
+<img src="https://github.com/farhad-pourkamali/MATH4388Online/blob/main/images/supervised.png?raw=true" width=600 align="center">
+</section>
+<section id="model-based-vs-instance-based-learning">
+<h2>Model-Based vs Instance-Based Learning<a class="headerlink" href="#model-based-vs-instance-based-learning" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Machine learning models can be categorized based on their <strong>learning strategies</strong>, notably into model-based and instance-based approaches.</p>
+<ul>
+<li><p>Model-based learning:</p>
+<ul>
+<li><p>Emphasizes learning a fixed set of parameters or rules during the training stage to make predictions.</p></li>
+<li><p>Once trained, the model’s parameters remain fixed, and predictions are made using this generalized model.</p></li>
+</ul>
+</li>
+<li><p>Instance-based learning</p>
+<ul>
+<li><p>Memorizes the training data and makes predictions for new instances by comparing them to stored examples (e.g., k-Nearest Neighbors and Radial Basis Function networks).</p></li>
+<li><p>Does not explicitly build a generalized model but relies on the similarity between instances.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>As a result, model-based approaches generally have faster prediction times but slower training.</p></li>
+</ul>
+<img src="https://github.com/farhad-pourkamali/MATH4388Online/blob/main/images/parametric_model.png?raw=true" width=600 align="center">
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="mathematical-concepts-behind-machine-learning">
+<h1>3. Mathematical Concepts Behind Machine Learning<a class="headerlink" href="#mathematical-concepts-behind-machine-learning" title="Link to this heading">#</a></h1>
+<section id="notation">
+<h2>Notation<a class="headerlink" href="#notation" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Supervised learning: learn a mapping or function <span class="math notranslate nohighlight">\(f\)</span> from inputs (features/predictors) <span class="math notranslate nohighlight">\(\mathbf{x}\in\mathcal{X}\)</span> to outputs <span class="math notranslate nohighlight">\(\mathbf{y}\in\mathcal{Y}\)</span>. The data set is given in the form of <span class="math notranslate nohighlight">\(N\)</span> input-output pairs <span class="math notranslate nohighlight">\(\mathcal{D}=\{(\mathbf{x}_n,\mathbf{y}_n)\}_{n=1}^N\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(N\)</span> is the sample size and the number of features is <span class="math notranslate nohighlight">\(D\)</span>, i.e., <span class="math notranslate nohighlight">\(\mathcal{X}=\mathbb{R}^D\)</span></p></li>
+<li><p>Multi-class classification: <span class="math notranslate nohighlight">\(\mathcal{Y}=\{1,2,\ldots, C\}\)</span></p></li>
+<li><p>If we have two classes only (binary classification):</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{Y}=\{0,1\}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathcal{Y}=\{-1,1\}\)</span></p></li>
+</ul>
+</li>
+<li><p>We often make an assumption about the functional form or shape of <span class="math notranslate nohighlight">\(f\)</span></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="empirical-risk-minimization">
+<h2>Empirical Risk Minimization<a class="headerlink" href="#empirical-risk-minimization" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ol class="arabic simple">
+<li><p>Joint Distribution and Population Risk</p></li>
+</ol>
+<ul class="simple">
+<li><p>In machine learning, we assume there is an underlying joint probability distribution <span class="math notranslate nohighlight">\(P_{XY}\)</span> over the input <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathcal{X}\)</span> and output <span class="math notranslate nohighlight">\(y \in \mathcal{Y}\)</span>.</p></li>
+<li><p>The goal is to find a model <span class="math notranslate nohighlight">\(f(\mathbf{x}; \boldsymbol{\theta})\)</span> parameterized by <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> that minimizes the expected error, or <strong>population risk</strong>, defined as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+R(\boldsymbol{\theta}) := \mathbb{E}_{(\mathbf{x},y)\sim P_{XY}}[l(y, f(\mathbf{x}; \boldsymbol{\theta}))]
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(l(y, f(\mathbf{x}; \boldsymbol{\theta}))\)</span> is the <strong>loss function</strong> measuring the discrepancy between the true label <span class="math notranslate nohighlight">\(y\)</span> and the model’s prediction <span class="math notranslate nohighlight">\(f(\mathbf{x}; \boldsymbol{\theta})\)</span>.</p>
+<ol class="arabic simple" start="2">
+<li><p>Sampling and Empirical Risk</p></li>
+</ol>
+<ul class="simple">
+<li><p>Since the true distribution <span class="math notranslate nohighlight">\(P_{XY}\)</span> is unknown, we rely on a data set of <span class="math notranslate nohighlight">\(N\)</span> i.i.d. samples <span class="math notranslate nohighlight">\(\{(\mathbf{x}_n, y_n)\}_{n=1}^N\)</span> drawn from <span class="math notranslate nohighlight">\(P_{XY}\)</span>. Using this data set, we compute the <strong>empirical risk</strong>, which serves as an approximation of the population risk:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}(\boldsymbol{\theta}) := \frac{1}{N} \sum_{n=1}^N l(y_n, f(\mathbf{x}_n; \boldsymbol{\theta}))
+\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Empirical Risk Minimization</p></li>
+</ol>
+<p>The objective of <strong>Empirical Risk Minimization (ERM)</strong> is to find the parameters <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> that minimize the empirical risk:</p>
+<div class="math notranslate nohighlight">
+\[
+{\boldsymbol{\theta}}^* := \arg\min_{\boldsymbol{\theta}} \mathcal{L}(\boldsymbol{\theta})
+\]</div>
+<p>By solving this optimization problem, we identify the model that best fits the training data.</p>
+</section>
+<section id="example-zero-one-loss-for-classification-problems">
+<h2>Example: Zero-One Loss for Classification Problems<a class="headerlink" href="#example-zero-one-loss-for-classification-problems" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>The <strong>zero-one loss</strong> is a simple loss function defined as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+l(y, \hat{y}) = I(y \neq \hat{y})
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(I(y \neq \hat{y})\)</span> is an indicator function:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+I(y \neq \hat{y}) = 
+\begin{cases}
+    1 &amp; \text{if } y \neq \hat{y} \\
+    0 &amp; \text{if } y = \hat{y}
+\end{cases}
+\end{split}\]</div>
+<p>Using the zero-one loss, the empirical risk becomes the misclassification rate:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}(\boldsymbol{\theta}) = \frac{1}{N} \sum_{n=1}^N I(y_n \neq f(\mathbf{x}_n; \boldsymbol{\theta}))
+\]</div>
+</section>
+<section id="example-hinge-loss-for-classification-with-margin">
+<h2>Example: Hinge Loss (For Classification with Margin)<a class="headerlink" href="#example-hinge-loss-for-classification-with-margin" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>The hinge loss is commonly used in classification problems, particularly with support vector machines (SVMs). It is defined as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+l(y, \hat{y}) = \max(0, 1 - y \cdot \hat{y})
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y \in \{-1, +1\}\)</span> represents the true label.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{y} = f(\mathbf{x}; \boldsymbol{\theta})\)</span> is the predicted score or margin.</p></li>
+</ul>
+<p>The hinge loss penalizes predictions that are incorrect or fall within the margin:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(y \cdot \hat{y} \geq 1\)</span>: The loss is zero, meaning the prediction is correct and beyond the margin.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(y \cdot \hat{y} &lt; 1\)</span>: The loss increases linearly as the prediction deviates from the correct classification boundary.</p></li>
+</ul>
+<p>In simple terms, the hinge loss encourages predictions to be not just correct, but confidently correct by maximizing the margin between classes.</p>
+</section>
+<section id="python-experiment">
+<h2>Python Experiment<a class="headerlink" href="#python-experiment" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>In the following, we assume the labels are binary: <span class="math notranslate nohighlight">\(y\in\{-1,+1\}\)</span></p></li>
+<li><p>We assume that the predicted value <span class="math notranslate nohighlight">\(\hat{y}\)</span>
+is a <strong>continuous score</strong>, and its sign determines the predicted class</p>
+<ul>
+<li><p>Positive sign (<span class="math notranslate nohighlight">\(\hat{y}&gt;0\)</span>): Predicted class is +1</p></li>
+<li><p>Negative sign (<span class="math notranslate nohighlight">\(\hat{y}&lt;0\)</span>): Predicted class is -1</p></li>
+</ul>
+</li>
+<li><p>Zero-One Loss: Evaluates whether the sign of <span class="math notranslate nohighlight">\(\hat{y}\)</span> matches the true label <span class="math notranslate nohighlight">\(y\)</span> (here <span class="math notranslate nohighlight">\(y\)</span> is +1)</p></li>
+<li><p>Hinge loss provides smoother feedback compared to the zero-one loss.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;figure.figsize&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">)})</span>
+
+<span class="c1"># Define zero-one loss</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">zero_one_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">y_true</span> <span class="o">*</span> <span class="n">y_pred</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Define hinge loss</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">hinge_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">y_true</span> <span class="o">*</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="c1"># Generate a range of predicted values (y_pred)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+
+<span class="c1"># Set the true label (y_true = 1 or -1)</span>
+<span class="n">y_true</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Calculate losses</span>
+<span class="n">zero_one</span> <span class="o">=</span> <span class="n">zero_one_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+<span class="n">hinge</span> <span class="o">=</span> <span class="n">hinge_loss</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+
+<span class="c1"># Plot the losses</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">zero_one</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Zero-One Loss&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">hinge</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Hinge Loss&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Zero-One Loss vs. Hinge Loss&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Predicted Value (y_pred)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Loss&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/29186d9219ae281a1bea974bbd87aacb3bce1ae4902a7eecc2d5b94af5a7097e.png" src="../_images/29186d9219ae281a1bea974bbd87aacb3bce1ae4902a7eecc2d5b94af5a7097e.png" />
+</div>
+</div>
+</section>
+<section id="general-workflow-for-machine-learning-models">
+<h2>General Workflow for Machine Learning Models<a class="headerlink" href="#general-workflow-for-machine-learning-models" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Data is fed into the model to pass through layer(s), each applying transformations to extract useful patterns or representations (linear algebra)</p></li>
+<li><p>The loss function computes the difference between predicted and expected outputs, quantifying prediction errors (probability and statistics)</p></li>
+<li><p>We adjust the parameters (iteratively) to minimize the loss function (optimization)</p></li>
+</ul>
+<img src="https://github.com/farhad-pourkamali/MATH4388Online/blob/main/images/ml_general.png?raw=true" width=650></section>
+<section id="generalization">
+<h2>Generalization<a class="headerlink" href="#generalization" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Divide the data into training and test sets: <span class="math notranslate nohighlight">\(\mathcal{D}_{\text{train}}\)</span> and <span class="math notranslate nohighlight">\(\mathcal{D}_{\text{test}}\)</span></p></li>
+</ul>
+<img src="https://github.com/farhad-pourkamali/MATH4388Online/blob/main/images/train_test.png?raw=true" width=200 align="right">
+<ul class="simple">
+<li><p>Train your model using the training set and test it using the test set</p></li>
+<li><p>Training risk: <span class="math notranslate nohighlight">\(\mathcal{L}_{\text{train}}:=\frac{1}{|\mathcal{D}_{\text{train}}|}\sum_{(\mathbf{x},y)\in\mathcal{D}_{\text{train}}}l(y,f(\mathbf{x};\boldsymbol{\theta}))\)</span></p></li>
+<li><p>Test risk: <span class="math notranslate nohighlight">\(\mathcal{L}_{\text{test}}:=\frac{1}{|\mathcal{D}_{\text{test}}|}\sum_{(\mathbf{x},y)\in\mathcal{D}_{\text{test}}}l(y,f(\mathbf{x};\boldsymbol{\theta}))\)</span></p></li>
+<li><p>Overfitting happens when <span class="math notranslate nohighlight">\(\mathcal{L}_{\text{test}}\gg \mathcal{L}_{\text{train}}\)</span></p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="programming-concepts-for-machine-learning">
+<h1>4. Programming Concepts for Machine Learning<a class="headerlink" href="#programming-concepts-for-machine-learning" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>A list in Python is a versatile, ordered collection of elements (which can be of different data types) that is mutable, allowing elements to be added, removed, or modified</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  List </span>
+
+<span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span> <span class="p">,</span> <span class="mi">5</span> <span class="p">,</span> <span class="mf">5.3</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">),</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">alist</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, &#39;a&#39;, 5, 5.3] 
+ 4 
+ 5 
+ 5.3
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>A tuple in Python is an ordered, immutable collection of elements (which can be of different data types) that cannot be changed after creation</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Tuples are just like lists with the exception that </span>
+<span class="c1"># tuples cannot be changed once declared</span>
+
+<span class="n">t</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;string&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">t</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1, &#39;a&#39;, &#39;string&#39;, 3) 	 &lt;class &#39;tuple&#39;&gt;
+a
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>A dictionary in Python is an unordered, mutable collection of key-value pairs, where each key is unique and used to efficiently access its corresponding value</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Dictionary holds key:value pairs</span>
+<span class="c1"># indexing is done with the help of keys</span>
+
+<span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="n">d</span><span class="p">[</span><span class="s2">&quot;fall&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">50</span> 
+
+<span class="n">d</span><span class="p">[</span><span class="s2">&quot;spring&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">80</span>
+
+<span class="c1"># print(d)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">&quot;fall&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>A for loop in Python is used to iterate over a sequence (like a list, tuple, or string) or other iterable objects, executing a block of code for each element in the sequence</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for loop </span>
+
+<span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+
+<span class="c1"># Method 1</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">alist</span><span class="p">:</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+3
+5
+7
+9
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">len()</span></code> function returns the total number of elements in the list</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">range()</span> </code>function generates a sequence of numbers starting from 0 (default) up to, but not including, <code class="docutils literal notranslate"><span class="pre">len(alist)</span></code></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+2
+3
+4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Method 2 </span>
+
+<span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">)):</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+3
+5
+7
+9
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">elif</span></code>, and <code class="docutils literal notranslate"><span class="pre">else</span></code> in Python are conditional statements used to execute specific blocks of code based on whether a condition is true (<code class="docutils literal notranslate"><span class="pre">if</span></code>), test additional conditions (<code class="docutils literal notranslate"><span class="pre">elif</span></code>), or provide a fallback when all conditions are false (<code class="docutils literal notranslate"><span class="pre">else</span></code>)</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># if statement</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Negative&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Zero&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Positive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Positive
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>A function in Python is a reusable block of code that performs a specific task, defined using the <code class="docutils literal notranslate"><span class="pre">def</span></code> keyword, and can accept inputs (parameters), execute operations, and optionally return a value</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># defining functions </span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="n">num_new</span> <span class="o">=</span> <span class="n">num</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">num_new</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">square</span><span class="p">(</span><span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">square</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Calculate a number raise to the power of 2.   </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># this is comment </span>
+    <span class="n">num_new</span> <span class="o">=</span> <span class="n">num</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">num_new</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># More than one output </span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">square_cube</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Calculate a number raise to the power of 2</span>
+<span class="sd">    Calculate a number raise to the power of 3</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">num_new1</span> <span class="o">=</span> <span class="n">num</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="n">num_new2</span> <span class="o">=</span> <span class="n">num</span> <span class="o">**</span> <span class="mi">3</span>
+    <span class="k">return</span> <span class="n">num_new1</span><span class="p">,</span> <span class="n">num_new2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">square_cube</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(9, 27) &lt;class &#39;tuple&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="object-oriented-programming-oop">
+<h2>Object-Oriented programming (OOP)<a class="headerlink" href="#object-oriented-programming-oop" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Ideal for building versatile and reusable tools/frameworks</p></li>
+<li><p>Code as a collection and interaction of <strong>objects</strong></p></li>
+<li><p>Object: a data structure incorporating information about</p>
+<ul>
+<li><p>State: How the object looks or what properties it has</p></li>
+<li><p>Behavior: What the object does or how to operate on</p>
+<ul>
+<li><p>Python: State –&gt; Attribute (variable), Behavior –&gt; Method (function)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Class: Blueprint or template for objects outlining possible states and behaviors</p></li>
+</ul>
+<img src="https://github.com/farhad-pourkamali/MATH4388Online/blob/main/images/OOP.png?raw=true" width=500><ul class="simple">
+<li><p>To explain OOP, let us consider the simple case of linear regression with one input feature, that is <span class="math notranslate nohighlight">\(f(x;\beta_0,\beta_1) = \beta_0 + \beta_1 x\)</span>. Given a set of input-output pairs <span class="math notranslate nohighlight">\((x_1, y_1), \ldots, (x_N, y_N)\)</span>, this is how you can find the intercept and slope: (Equation 3.4 of An Introduction to Statistical Learning with Applications in Python or ISL: <a class="reference external" href="https://www.statlearning.com/">https://www.statlearning.com/</a>)</p></li>
+</ul>
+<p>\begin{equation*}
+\beta_1^* = \frac{\sum_{n=1}^N (x_n - \bar{x})(y_n - \bar{y})}{\sum_{n=1}^N (x_n - \bar{x})^2}
+\end{equation*}</p>
+<p>and</p>
+<p>\begin{equation*}
+\beta_0^* = \bar{y} - \beta_1^* \bar{x}
+\end{equation*}</p>
+<p>where <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span> are sample means.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">SimpleLinearRegression</span><span class="p">:</span>
+    
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c1"># Initialize parameters (beta_0 and beta_1) to None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta_0</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta_1</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Fit the model to the data using the provided formulas.</span>
+<span class="sd">        Args:</span>
+<span class="sd">        x: List or array of input features</span>
+<span class="sd">        y: List or array of target values</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">x_mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+        <span class="n">y_mean</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+
+        <span class="c1"># Calculate beta_1 using the provided formula</span>
+        <span class="n">numerator</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">xi</span> <span class="o">-</span> <span class="n">x_mean</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">yi</span> <span class="o">-</span> <span class="n">y_mean</span><span class="p">)</span> <span class="k">for</span> <span class="n">xi</span><span class="p">,</span> <span class="n">yi</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+        <span class="n">denominator</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">xi</span> <span class="o">-</span> <span class="n">x_mean</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta_1</span> <span class="o">=</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span>
+
+        <span class="c1"># Calculate beta_0 using the provided formula</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">beta_0</span> <span class="o">=</span> <span class="n">y_mean</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_1</span> <span class="o">*</span> <span class="n">x_mean</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Predict the target values for given input features.</span>
+<span class="sd">        Args:</span>
+<span class="sd">        x: List or array of input features</span>
+<span class="sd">        Returns:</span>
+<span class="sd">        List of predicted values</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">beta_0</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">beta_1</span> <span class="o">*</span> <span class="n">xi</span> <span class="k">for</span> <span class="n">xi</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
+
+
+<span class="c1"># Example usage:</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">17</span><span class="p">]</span>  <span class="c1"># Corresponding to beta_0 = 2 and beta_1 = 3</span>
+
+<span class="c1"># Create an instance of the SimpleLinearRegression class</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">SimpleLinearRegression</span><span class="p">()</span>
+
+<span class="c1"># Fit the model to the data</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Predict values for the input x</span>
+<span class="n">predicted_y</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">([</span><span class="mi">10</span><span class="p">])</span>
+
+<span class="c1"># Print results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Learned parameters:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Beta_0 (Intercept): </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">beta_0</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Beta_1 (Slope): </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">beta_1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Predicted values:&quot;</span><span class="p">,</span> <span class="n">predicted_y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Learned parameters:
+Beta_0 (Intercept): 2.0
+Beta_1 (Slope): 3.0
+Predicted values: [32.0]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="numpy">
+<h2>NumPy<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>NumPy ndarrays provide an efficient, multidimensional array structure for numerical computation, enabling fast operations on large data sets with support for advanced mathematical, logical, and statistical functions</p></li>
+<li><p>1D (vector) and 2D arrays (matrix)
+$<span class="math notranslate nohighlight">\(\mathbf{a}=\begin{bmatrix}a_1\\a_2\\\vdots\\a_n\end{bmatrix}\in\mathbb{R}^n,\;\mathbf{A}=\begin{bmatrix}a_{11}&amp;\ldots&amp;a_{1m}\\
+\vdots&amp;&amp;\vdots\\a_{n1}&amp;&amp;a_{nm}\end{bmatrix}\in\mathbb{R}^{n\times m}\)</span>$</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4,) (2, 2) &lt;class &#39;numpy.ndarray&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 2 3 4]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 2]
+ [3 4]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">ndim</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">.</span><span class="n">ndim</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1, 2, 3, 4])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 2],
+       [3, 4]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 2],
+       [3, 4]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reshape</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">A</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">b</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 2 3 4] (4,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># True if two arrays have the same shape and elements</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">array_equal</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># transpose a matrix by switching its rows with its columns</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1 2]
+ [3 4]] 
+
+ [[1 3]
+ [2 4]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="o">.</span><span class="n">T</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1, 3],
+       [2, 4]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="kn">import</span> <span class="n">linalg</span> <span class="c1"># implementations of standard linear algebra algorithms</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dot-product-or-inner-product">
+<h2>Dot product or inner product<a class="headerlink" href="#dot-product-or-inner-product" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<div class="math notranslate nohighlight">
+\[\langle\mathbf{x},\mathbf{y}\rangle=\sum_{i=1}^n x_iy_i\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># norm of x squared </span>
+<span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="matrix-multiplication">
+<h2>Matrix multiplication<a class="headerlink" href="#matrix-multiplication" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Method 1
+$<span class="math notranslate nohighlight">\(\begin{bmatrix}a_{11} &amp; \ldots &amp; a_{1n}\\\vdots &amp; &amp; \vdots\\a_{m1}&amp;\ldots &amp;a_{mn}\end{bmatrix}\begin{bmatrix}x_1\\\vdots\\x_n\end{bmatrix}=x_1\begin{bmatrix}a_{11}\\\vdots\\a_{m1}\end{bmatrix}+\ldots+x_n\begin{bmatrix}a_{1n}\\\vdots\\a_{mn}\end{bmatrix}\)</span>$</p></li>
+<li><p>Method 2
+$<span class="math notranslate nohighlight">\(\begin{bmatrix}a_{11} &amp; \ldots &amp; a_{1n}\\\vdots &amp; &amp; \vdots\\a_{m1}&amp;\ldots &amp;a_{mn}\end{bmatrix}\begin{bmatrix}x_1\\\vdots\\x_n\end{bmatrix}=\begin{bmatrix}\sum_{i=1}^n a_{1i}x_i\\\vdots\\\sum_{i=1}^na_{mi}x_i\end{bmatrix}\)</span>$</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">],[</span><span class="mi">4</span><span class="p">],[</span><span class="mi">5</span><span class="p">]])</span> 
+
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">x</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[25]
+ [58]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pandas">
+<h2>Pandas<a class="headerlink" href="#pandas" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Provides high performance, fast, easy-to-use data structures, and data analysis tools for manipulating tabular data</p></li>
+<li><p>Dataframe</p>
+<ul>
+<li><p>A two dimensional data structure with columns of potentially different types</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read CSV File into Python using Pandas</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Credit.csv&quot;</span><span class="p">)</span>
+                 
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">32</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;Credit.csv&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="nn">File ~/anaconda3/envs/tensorflow/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/envs/tensorflow/lib/python3.11/site-packages/pandas/io/parsers/readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File ~/anaconda3/envs/tensorflow/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/envs/tensorflow/lib/python3.11/site-packages/pandas/io/parsers/readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File ~/anaconda3/envs/tensorflow/lib/python3.11/site-packages/pandas/io/common.py:873,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">868</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">869</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
+<span class="g g-Whitespace">    </span><span class="mi">870</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
+<span class="g g-Whitespace">    </span><span class="mi">871</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">872</span>         <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">873</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">874</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">875</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">876</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">877</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">878</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">879</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">880</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">881</span>         <span class="c1"># Binary mode</span>
+<span class="g g-Whitespace">    </span><span class="mi">882</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;Credit.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>400
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Income&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       14.891
+1      106.025
+2      104.593
+3      148.924
+4       55.882
+        ...   
+395     12.096
+396     13.364
+397     57.872
+398     37.728
+399     18.701
+Name: Income, Length: 400, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Income&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># in thousands of dollars</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: &gt;
+</pre></div>
+</div>
+<img alt="../_images/36c7550f7239bc8decc9260b0f348f226725661b2cdae9fd286735df4c5b5c95.png" src="../_images/36c7550f7239bc8decc9260b0f348f226725661b2cdae9fd286735df4c5b5c95.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select rows where the values in the Income column are less than 100</span>
+<span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Income&#39;</span><span class="p">]</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Income</th>
+      <th>Limit</th>
+      <th>Rating</th>
+      <th>Cards</th>
+      <th>Age</th>
+      <th>Education</th>
+      <th>Own</th>
+      <th>Student</th>
+      <th>Married</th>
+      <th>Region</th>
+      <th>Balance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>14.891</td>
+      <td>3606</td>
+      <td>283</td>
+      <td>2</td>
+      <td>34</td>
+      <td>11</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Yes</td>
+      <td>South</td>
+      <td>333</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>55.882</td>
+      <td>4897</td>
+      <td>357</td>
+      <td>2</td>
+      <td>68</td>
+      <td>16</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Yes</td>
+      <td>South</td>
+      <td>331</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>80.180</td>
+      <td>8047</td>
+      <td>569</td>
+      <td>4</td>
+      <td>77</td>
+      <td>10</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>South</td>
+      <td>1151</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>20.996</td>
+      <td>3388</td>
+      <td>259</td>
+      <td>2</td>
+      <td>37</td>
+      <td>12</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>No</td>
+      <td>East</td>
+      <td>203</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>71.408</td>
+      <td>7114</td>
+      <td>512</td>
+      <td>2</td>
+      <td>87</td>
+      <td>9</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>West</td>
+      <td>872</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>395</th>
+      <td>12.096</td>
+      <td>4100</td>
+      <td>307</td>
+      <td>3</td>
+      <td>32</td>
+      <td>13</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Yes</td>
+      <td>South</td>
+      <td>560</td>
+    </tr>
+    <tr>
+      <th>396</th>
+      <td>13.364</td>
+      <td>3838</td>
+      <td>296</td>
+      <td>5</td>
+      <td>65</td>
+      <td>17</td>
+      <td>No</td>
+      <td>No</td>
+      <td>No</td>
+      <td>East</td>
+      <td>480</td>
+    </tr>
+    <tr>
+      <th>397</th>
+      <td>57.872</td>
+      <td>4171</td>
+      <td>321</td>
+      <td>5</td>
+      <td>67</td>
+      <td>12</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>Yes</td>
+      <td>South</td>
+      <td>138</td>
+    </tr>
+    <tr>
+      <th>398</th>
+      <td>37.728</td>
+      <td>2525</td>
+      <td>192</td>
+      <td>1</td>
+      <td>44</td>
+      <td>13</td>
+      <td>No</td>
+      <td>No</td>
+      <td>Yes</td>
+      <td>South</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>399</th>
+      <td>18.701</td>
+      <td>5524</td>
+      <td>415</td>
+      <td>5</td>
+      <td>64</td>
+      <td>7</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>No</td>
+      <td>West</td>
+      <td>966</td>
+    </tr>
+  </tbody>
+</table>
+<p>363 rows × 11 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span> 
+
+<span class="c1"># Select two columns and convert them to lists</span>
+<span class="n">x_list</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Limit&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>  <span class="c1"># Convert &#39;Income&#39; column to a Python list</span>
+<span class="n">y_list</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Balance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>  <span class="c1"># Convert &#39;Balance&#39; column to a Python list</span>
+
+<span class="c1"># Visualize the scatter plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_list</span><span class="p">,</span> <span class="n">y_list</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Limit&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Balance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/a306b027e4b00ab46d2cf47673dbcdb064e2583a123349f6a5f9fb52f28266d3.png" src="../_images/a306b027e4b00ab46d2cf47673dbcdb064e2583a123349f6a5f9fb52f28266d3.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the SimpleLinearRegression class</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">SimpleLinearRegression</span><span class="p">()</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_list</span><span class="p">,</span> <span class="n">y_list</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">beta_0</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">beta_1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-292.7904954559949 0.171637278371483
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize the scatter plot and prediction line </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_list</span><span class="p">,</span> <span class="n">y_list</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">edgecolors</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">2000</span><span class="p">,</span> <span class="mi">14000</span><span class="p">],</span> 
+         <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">beta_0</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">beta_1</span><span class="o">*</span><span class="mi">2000</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">beta_0</span> <span class="o">+</span> <span class="n">model</span><span class="o">.</span><span class="n">beta_1</span><span class="o">*</span><span class="mi">14000</span><span class="p">],</span>
+         <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;C2&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Limit&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Balance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/7579b96a2fb9ccce40e73f9b115035521259b2710153161e30da01ad3d63fe2a.png" src="../_images/7579b96a2fb9ccce40e73f9b115035521259b2710153161e30da01ad3d63fe2a.png" />
+</div>
+</div>
+</section>
+<section id="recommended-reading">
+<h2>Recommended Reading<a class="headerlink" href="#recommended-reading" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Section 2.3 of ISL “Lab: Introduction to Python” (pages 40-62)</p>
+<ul>
+<li><p>An Introduction to Statistical Learning with Applications in Python, link: <a class="reference external" href="https://www.statlearning.com/">https://www.statlearning.com/</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "tensorflow"
+        },
+        kernelOptions: {
+            name: "tensorflow",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'tensorflow'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to MATH 4/5388 – Machine Learning Methods</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Module2.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data Preparation and Validation Techniques</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">The Machine Learning Landscape</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-methods">Machine Learning Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-1-the-machine-learning-landscape">Module 1: The Machine Learning Landscape</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-farhad-pourkamali">Instructor: Farhad Pourkamali</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-machine-learning">1. Definition of Machine Learning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-use-machine-learning">Why Use Machine Learning?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-machine-learning">What Is Machine Learning?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#components-and-types-of-machine-learning">2. Components and Types of Machine Learning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-machine-learning">Components of Machine Learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-machine-learning">Types of Machine Learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#supervised-learning-making-predictions">Supervised Learning (Making Predictions)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-based-vs-instance-based-learning">Model-Based vs Instance-Based Learning</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-concepts-behind-machine-learning">3. Mathematical Concepts Behind Machine Learning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notation">Notation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-risk-minimization">Empirical Risk Minimization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-zero-one-loss-for-classification-problems">Example: Zero-One Loss for Classification Problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-hinge-loss-for-classification-with-margin">Example: Hinge Loss (For Classification with Margin)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python-experiment">Python Experiment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-workflow-for-machine-learning-models">General Workflow for Machine Learning Models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generalization">Generalization</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-concepts-for-machine-learning">4. Programming Concepts for Machine Learning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-oriented-programming-oop">Object-Oriented programming (OOP)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">NumPy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dot-product-or-inner-product">Dot product or inner product</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication">Matrix multiplication</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas">Pandas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-reading">Recommended Reading</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Farhad Pourkamali
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
