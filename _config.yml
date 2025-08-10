@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: "MATH 4/5388: Machine Learning Methods"
-author: Farhad Pourkamali, Ph.D.
+author: Farhad Pourkamali
 copyright: "2025, Farhad Pourkamali"
 logo: logo.png
 only_build_toc_files: true
