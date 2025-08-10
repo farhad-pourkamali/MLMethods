@@ -7,6 +7,9 @@ copyright:
 logo: logo.png
 only_build_toc_files: true
 
+execute:
+  execute_notebooks: "off"   
+
 repository:
   url: https://github.com/farhad-pourkamali/MLMethods
   branch: main
@@ -16,4 +19,6 @@ html:
   use_repository_button: true
   use_issues_button: true
   use_edit_page_button: true
+
+
 
