@@ -201,7 +201,6 @@
 
 <li class="toctree-l1"><a class="reference internal" href="Module4.html">Parametric Classification Models</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Unsupervised Learning</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="Module6-part1.html">Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module6-part2.html">Decision Trees and Random Forests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module6-part3.html">Gradient Boosting</a></li>
@@ -419,39 +418,25 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Unsupervised Learning</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-methods">Machine Learning Methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-5-unsupervised-learning">Module 5: Unsupervised Learning</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-farhad-pourkamali">Instructor: Farhad Pourkamali</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering">K-means clustering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering-and-initialization">K-means clustering and initialization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-optimal-number-of-clusters">Finding the optimal number of clusters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-silhouette-score-instead-of-inertia">Using silhouette score instead of inertia</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan">DBSCAN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-mixtures">Gaussian Mixtures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-clustering-with-normalized-mutual-information-nmi">Evaluating Clustering with Normalized Mutual Information (NMI)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contingency-table">Contingency Table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-compute-entropy-of-true-labels">Step 1: Compute Entropy of True Labels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-compute-entropy-of-predicted-labels">Step 2: Compute Entropy of Predicted Labels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-compute-mutual-information">Step 3: Compute Mutual Information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-compute-normalized-mutual-information-nmi">Step 4: Compute Normalized Mutual Information (NMI)</a></li>
 </ul>
 </li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#begin-equation-z-n1-z-n2-dots-z-nk-begin-bmatrix-boldsymbol-mu-1-boldsymbol-mu-2-vdots-boldsymbol-mu-k-end-bmatrix">\begin{equation*}
-[z_{n1}, z_{n2}, \dots, z_{nK}]
-\begin{bmatrix}
-\boldsymbol{\mu}_1 \
-\boldsymbol{\mu}_2 \
-\vdots \
-\boldsymbol{\mu}_K
-\end{bmatrix}</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering-and-initialization">K-means clustering and initialization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-optimal-number-of-clusters">Finding the optimal number of clusters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-silhouette-score-instead-of-inertia">Using silhouette score instead of inertia</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan">DBSCAN</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-mixtures">Gaussian Mixtures</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-clustering-with-normalized-mutual-information-nmi">Evaluating Clustering with Normalized Mutual Information (NMI)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contingency-table">Contingency Table</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-compute-entropy-of-true-labels">Step 1: Compute Entropy of True Labels</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-compute-entropy-of-predicted-labels">Step 2: Compute Entropy of Predicted Labels</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-compute-mutual-information">Step 3: Compute Mutual Information</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-compute-normalized-mutual-information-nmi">Step 4: Compute Normalized Mutual Information (NMI)</a></li>
-</ul>
-</li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -476,20 +461,22 @@ document.write(`
 <h3>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h3>
 <hr style="border:2px solid gray">
 <ul class="simple">
-<li><p>Unsupervised learning deals with <span class="math notranslate nohighlight">\(\color{red}{\text{unlabeled data}}\)</span>, meaning the model is not provided with output labels during training
-\begin{equation*}
-\mathcal{D} = { \mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N }, \quad \text{no } y \text{ during training}
-\end{equation*}</p></li>
+<li><p>Unsupervised learning deals with <span class="math notranslate nohighlight">\(\color{red}{\text{unlabeled data}}\)</span>, meaning the model is not provided with output labels during training</p></li>
 </ul>
-<p>\begin{equation*}
-X =
+<div class="math notranslate nohighlight">
+\[
+\mathcal{D} = \{ \mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_N \}, \quad \text{no } y \text{ during training}
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{X} =
 \begin{bmatrix}
-x_{11} &amp; x_{12} &amp; \dots &amp; x_{1D}  \[5pt]
-x_{21} &amp; x_{22} &amp; \dots &amp; x_{2D} \[5pt]
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \[5pt]
-x_{N1} &amp; x_{N2} &amp; \dots &amp; x_{ND}
+     x_{11} &amp; x_{12} &amp; \dots &amp; x_{1D}  \\[5pt]
+     x_{21} &amp; x_{22} &amp; \dots &amp; x_{2D} \\[5pt]
+     \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\[5pt]
+     x_{N1} &amp; x_{N2} &amp; \dots &amp; x_{ND} 
 \end{bmatrix}\in\mathbb{R}^{N\times D}
-\end{equation*}</p>
+\end{split}\]</div>
 <ul>
 <li><p>The goal is to identify patterns, structures, or relationships within the data without explicit guidance from labeled examples</p></li>
 <li><p>Labeling data for supervised learning can be a time-consuming and expensive task, especially when dealing with large data sets or complex tasks that require domain expertise</p></li>
@@ -542,61 +529,64 @@ x_{N1} &amp; x_{N2} &amp; \dots &amp; x_{ND}
 <ul class="simple">
 <li><p>For a specific data point <span class="math notranslate nohighlight">\(\mathbf{x}_n\)</span>, we can rewrite:</p></li>
 </ul>
-<p>\begin{equation*}
-\boldsymbol{\mu}<em>{z_n} = \sum</em>{k=1}^{K} z_{nk} \boldsymbol{\mu}_k
-\end{equation*}</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\mu}_{z_n} = \sum_{k=1}^{K} z_{nk} \boldsymbol{\mu}_k
+\]</div>
 <p>as a matrix-vector multiplication</p>
 <ul class="simple">
 <li><p>The row vector of <span class="math notranslate nohighlight">\(\mathbf{Z}\)</span> corresponding to <span class="math notranslate nohighlight">\(\mathbf{x}_n\)</span> is:</p></li>
 </ul>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 [z_{n1}, z_{n2}, \dots, z_{nK}]
-\end{equation*}</p>
+\]</div>
 <p>Note that only one of these values is 1 (the rest are 0)</p>
 <ul class="simple">
 <li><p>Each row of <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> represents a cluster center <span class="math notranslate nohighlight">\(\boldsymbol{\mu}_k\)</span>:</p></li>
 </ul>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[\begin{split}
 \mathbf{M} =
 \begin{bmatrix}
-\boldsymbol{\mu}_1 \
-\boldsymbol{\mu}_2 \
-\vdots \
-\boldsymbol{\mu}_K
+    \boldsymbol{\mu}_1 \\
+    \boldsymbol{\mu}_2 \\
+    \vdots \\
+    \boldsymbol{\mu}_K
 \end{bmatrix}
-\end{equation*}</p>
+\end{split}\]</div>
 <p>where each <span class="math notranslate nohighlight">\(\boldsymbol{\mu}_k\)</span> is a row vector in <span class="math notranslate nohighlight">\(\mathbb{R}^D\)</span></p>
 <ul class="simple">
 <li><p>Multiplying the row vector <span class="math notranslate nohighlight">\([z_{n1}, z_{n2}, \dots, z_{nK}]\)</span> with <span class="math notranslate nohighlight">\(\mathbf{M}\)</span> selects the assigned cluster:</p></li>
 </ul>
-</section>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="begin-equation-z-n1-z-n2-dots-z-nk-begin-bmatrix-boldsymbol-mu-1-boldsymbol-mu-2-vdots-boldsymbol-mu-k-end-bmatrix">
-<h1>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[\begin{split}
 [z_{n1}, z_{n2}, \dots, z_{nK}]
 \begin{bmatrix}
-\boldsymbol{\mu}_1 \
-\boldsymbol{\mu}_2 \
-\vdots \
-\boldsymbol{\mu}_K
-\end{bmatrix}<a class="headerlink" href="#begin-equation-z-n1-z-n2-dots-z-nk-begin-bmatrix-boldsymbol-mu-1-boldsymbol-mu-2-vdots-boldsymbol-mu-k-end-bmatrix" title="Link to this heading">#</a></h1>
-<p>\boldsymbol{\mu}_{z_n}
-\end{equation*}</p>
-<p>Thus, our term simplifies as:</p>
-<p>\begin{equation*}
-\mathbf{x}<em>n - \sum</em>{k=1}^{K} z_{nk} \boldsymbol{\mu}<em>k = \mathbf{x}<em>n - [z</em>{n1}, z</em>{n2}, \dots, z_{nK}]
-\begin{bmatrix}
-\boldsymbol{\mu}_1 \
-\boldsymbol{\mu}_2 \
-\vdots \
-\boldsymbol{\mu}_K
+    \boldsymbol{\mu}_1 \\
+    \boldsymbol{\mu}_2 \\
+    \vdots \\
+    \boldsymbol{\mu}_K
 \end{bmatrix}
-\end{equation*}</p>
+=
+\boldsymbol{\mu}_{z_n}
+\end{split}\]</div>
+<p>Thus, our term simplifies as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{x}_n - \sum_{k=1}^{K} z_{nk} \boldsymbol{\mu}_k = \mathbf{x}_n - [z_{n1}, z_{n2}, \dots, z_{nK}]
+\begin{bmatrix}
+    \boldsymbol{\mu}_1 \\
+    \boldsymbol{\mu}_2 \\
+    \vdots \\
+    \boldsymbol{\mu}_K
+\end{bmatrix}
+\end{split}\]</div>
 <p>which is just:</p>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 \mathbf{x}_n - \mathbf{Z}_n \mathbf{M}
-\end{equation*}</p>
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{Z}_n\)</span> is the row vector of <span class="math notranslate nohighlight">\(\mathbf{Z}\)</span> corresponding to <span class="math notranslate nohighlight">\(\mathbf{x}_n\)</span></p>
 <ul class="simple">
 <li><p>Hence, for the entire data set, we have:</p></li>
@@ -724,8 +714,9 @@ x_{N1} &amp; x_{N2} &amp; \dots &amp; x_{ND}
 </div>
 </div>
 </div>
+</section>
 <section id="k-means-clustering-and-initialization">
-<h2>K-means clustering and initialization<a class="headerlink" href="#k-means-clustering-and-initialization" title="Link to this heading">#</a></h2>
+<h3>K-means clustering and initialization<a class="headerlink" href="#k-means-clustering-and-initialization" title="Link to this heading">#</a></h3>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>K-means clustering needs to be initialized carefully</p></li>
@@ -750,7 +741,7 @@ x_{N1} &amp; x_{N2} &amp; \dots &amp; x_{ND}
 \[D_{t-1}(\mathbf{x}_n)=\min_{k\in\{1,\ldots,t-1\}}\|\mathbf{x}_n - \boldsymbol{\mu}_k\|_2^2\]</div>
 </section>
 <section id="finding-the-optimal-number-of-clusters">
-<h2>Finding the optimal number of clusters<a class="headerlink" href="#finding-the-optimal-number-of-clusters" title="Link to this heading">#</a></h2>
+<h3>Finding the optimal number of clusters<a class="headerlink" href="#finding-the-optimal-number-of-clusters" title="Link to this heading">#</a></h3>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>A natural choice for picking <span class="math notranslate nohighlight">\(K\)</span> is to pick the value that minimizes the reconstruction error</p></li>
@@ -806,7 +797,7 @@ x_{N1} &amp; x_{N2} &amp; \dots &amp; x_{ND}
 </div>
 </section>
 <section id="using-silhouette-score-instead-of-inertia">
-<h2>Using silhouette score instead of inertia<a class="headerlink" href="#using-silhouette-score-instead-of-inertia" title="Link to this heading">#</a></h2>
+<h3>Using silhouette score instead of inertia<a class="headerlink" href="#using-silhouette-score-instead-of-inertia" title="Link to this heading">#</a></h3>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>The Silhouette Score evaluates clustering quality by measuring how well-separated clusters are. For each data point <span class="math notranslate nohighlight">\(\mathbf{x}_n\)</span>, we compute:</p>
@@ -817,9 +808,10 @@ x_{N1} &amp; x_{N2} &amp; \dots &amp; x_{ND}
 </li>
 </ul>
 <p>The Silhouette Coefficient for each data point is defined as:</p>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 s_n = \frac{b_n - a_n}{\max(a_n, b_n)}
-\end{equation*}</p>
+\]</div>
 <p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(-1 \leq s_n \leq 1\)</span>,</p></li>
@@ -854,7 +846,7 @@ S = \frac{1}{N} \sum_{n=1}^{N} s_n
 </div>
 </section>
 <section id="dbscan">
-<h2>DBSCAN<a class="headerlink" href="#dbscan" title="Link to this heading">#</a></h2>
+<h3>DBSCAN<a class="headerlink" href="#dbscan" title="Link to this heading">#</a></h3>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>This algorithm defines clusters as continuous regions of high density</p>
@@ -961,15 +953,16 @@ S = \frac{1}{N} \sum_{n=1}^{N} s_n
 </div>
 </section>
 <section id="gaussian-mixtures">
-<h2>Gaussian Mixtures<a class="headerlink" href="#gaussian-mixtures" title="Link to this heading">#</a></h2>
+<h3>Gaussian Mixtures<a class="headerlink" href="#gaussian-mixtures" title="Link to this heading">#</a></h3>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>The Gaussian Mixture Model (GMM) assumes that the data is generated from a mixture of multiple Gaussian distributions, each representing a cluster</p></li>
 <li><p>The goal of the GMM is to identify these Gaussian distributions and estimate their parameters to assign data points to the most probable clusters</p></li>
 </ul>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 P(\mathbf{x}) = \sum_{k=1}^{K} \pi_k \mathcal{N}(\mathbf{x} | \boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)
-\end{equation*}</p>
+\]</div>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\pi_k\)</span> is the mixing coefficient of the <span class="math notranslate nohighlight">\(k\)</span>-th Gaussian component, representing the probability of selecting the <span class="math notranslate nohighlight">\(k\)</span>-th component
 - If <span class="math notranslate nohighlight">\(\pi_k\)</span> is high, cluster <span class="math notranslate nohighlight">\(k\)</span> is dominant in the data set
@@ -982,9 +975,10 @@ P(\mathbf{x}) = \sum_{k=1}^{K} \pi_k \mathcal{N}(\mathbf{x} | \boldsymbol{\mu}_k
 <li><p>Unlike K-Means, where a data point is assigned to exactly one cluster, GMM assigns a probability of belonging to each cluster</p></li>
 <li><p>The probability that <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> belongs to the <span class="math notranslate nohighlight">\(k\)</span>-th cluster is given by:</p></li>
 </ul>
-<p>\begin{equation*}
-P(k \mid \mathbf{x}) = \frac{\pi_k \mathcal{N}(\mathbf{x} \mid \boldsymbol{\mu}_k, \boldsymbol{\Sigma}<em>k)}{\sum</em>{j=1}^{K} \pi_j \mathcal{N}(\mathbf{x} \mid \boldsymbol{\mu}_j, \boldsymbol{\Sigma}_j)}
-\end{equation*}</p>
+<div class="math notranslate nohighlight">
+\[
+P(k \mid \mathbf{x}) = \frac{\pi_k \mathcal{N}(\mathbf{x} \mid \boldsymbol{\mu}_k, \boldsymbol{\Sigma}_k)}{\sum_{j=1}^{K} \pi_j \mathcal{N}(\mathbf{x} \mid \boldsymbol{\mu}_j, \boldsymbol{\Sigma}_j)}
+\]</div>
 <ul class="simple">
 <li><p>Each data point has a soft assignment (probability) to multiple clusters, rather than a hard assignment.</p></li>
 <li><p>Thus, GMM allows for overlapping clusters, making it more flexible than K-Means.</p></li>
@@ -1532,12 +1526,13 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </section>
 <section id="evaluating-clustering-with-normalized-mutual-information-nmi">
-<h2>Evaluating Clustering with Normalized Mutual Information (NMI)<a class="headerlink" href="#evaluating-clustering-with-normalized-mutual-information-nmi" title="Link to this heading">#</a></h2>
+<h3>Evaluating Clustering with Normalized Mutual Information (NMI)<a class="headerlink" href="#evaluating-clustering-with-normalized-mutual-information-nmi" title="Link to this heading">#</a></h3>
 <hr style="border:2px solid gray">
 <p>In classification, we have ground truth labels and predicted labels, so accuracy is a natural evaluation metric:</p>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 \text{Accuracy} = \frac{\text{Correct Predictions}}{\text{Total Samples}}
-\end{equation*}</p>
+\]</div>
 <p>However, in clustering, we do not have predefined class labels. Instead:</p>
 <ul class="simple">
 <li><p>Clustering assigns data points to clusters without knowing their true class labels.</p></li>
@@ -1558,7 +1553,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </ul>
 </section>
 <section id="contingency-table">
-<h2>Contingency Table<a class="headerlink" href="#contingency-table" title="Link to this heading">#</a></h2>
+<h3>Contingency Table<a class="headerlink" href="#contingency-table" title="Link to this heading">#</a></h3>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>A contingency table (also called a confusion matrix for clustering) represents the relationship between true labels and predicted clusters.</p></li>
@@ -1579,14 +1574,15 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </ol>
 </section>
 <section id="step-1-compute-entropy-of-true-labels">
-<h2>Step 1: Compute Entropy of True Labels<a class="headerlink" href="#step-1-compute-entropy-of-true-labels" title="Link to this heading">#</a></h2>
+<h3>Step 1: Compute Entropy of True Labels<a class="headerlink" href="#step-1-compute-entropy-of-true-labels" title="Link to this heading">#</a></h3>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>Entropy measures the uncertainty or randomness in the distribution of true labels. It is given by:</p></li>
 </ul>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 H(Y) = - \sum_{y \in Y} P(y) \log_2 P(y)
-\end{equation*}</p>
+\]</div>
 <p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(P(y)\)</span> is the probability of each true label.</p></li>
@@ -1595,9 +1591,10 @@ H(Y) = - \sum_{y \in Y} P(y) \log_2 P(y)
 <ul class="simple">
 <li><p>From the contingency table, we compute:</p></li>
 </ul>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 H(Y) =  - \sum_{i} \frac{|Y_i|}{N} \log_2 \frac{|Y_i|}{N}
-\end{equation*}</p>
+\]</div>
 <p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(|Y_i|\)</span> is the number of samples in each true class,</p></li>
@@ -1605,32 +1602,35 @@ H(Y) =  - \sum_{i} \frac{|Y_i|}{N} \log_2 \frac{|Y_i|}{N}
 </ul>
 </section>
 <section id="step-2-compute-entropy-of-predicted-labels">
-<h2>Step 2: Compute Entropy of Predicted Labels<a class="headerlink" href="#step-2-compute-entropy-of-predicted-labels" title="Link to this heading">#</a></h2>
+<h3>Step 2: Compute Entropy of Predicted Labels<a class="headerlink" href="#step-2-compute-entropy-of-predicted-labels" title="Link to this heading">#</a></h3>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>Similarly, the entropy of predicted clusters is:</p></li>
 </ul>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 H(\hat{Y}) = - \sum_{\hat{y} \in \hat{Y}} P(\hat{y}) \log_2 P(\hat{y})
-\end{equation*}</p>
+\]</div>
 <p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(P(\hat{y})\)</span> is the probability of each predicted cluster.</p></li>
 <li><p>We compute it using the column sums of the contingency table.</p></li>
 </ul>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 H(\hat{Y}) = - \sum_{j} \frac{|\hat{Y}_j|}{N} \log_2 \frac{|\hat{Y}_j|}{N}
-\end{equation*}</p>
+\]</div>
 </section>
 <section id="step-3-compute-mutual-information">
-<h2>Step 3: Compute Mutual Information<a class="headerlink" href="#step-3-compute-mutual-information" title="Link to this heading">#</a></h2>
+<h3>Step 3: Compute Mutual Information<a class="headerlink" href="#step-3-compute-mutual-information" title="Link to this heading">#</a></h3>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>Mutual Information (MI) quantifies how much knowing the predicted cluster reduces uncertainty about the true label:</p></li>
 </ul>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 MI(Y, \hat{Y}) = \sum_{y \in Y} \sum_{\hat{y} \in \hat{Y}} P(y, \hat{y}) \log_2 \frac{P(y, \hat{y})}{P(y) P(\hat{y})}
-\end{equation*}</p>
+\]</div>
 <p>where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(P(y, \hat{y})\)</span> is the joint probability (computed from the contingency table).</p></li>
@@ -1638,14 +1638,15 @@ MI(Y, \hat{Y}) = \sum_{y \in Y} \sum_{\hat{y} \in \hat{Y}} P(y, \hat{y}) \log_2 
 </ul>
 </section>
 <section id="step-4-compute-normalized-mutual-information-nmi">
-<h2>Step 4: Compute Normalized Mutual Information (NMI)<a class="headerlink" href="#step-4-compute-normalized-mutual-information-nmi" title="Link to this heading">#</a></h2>
+<h3>Step 4: Compute Normalized Mutual Information (NMI)<a class="headerlink" href="#step-4-compute-normalized-mutual-information-nmi" title="Link to this heading">#</a></h3>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>To ensure values range from 0 to 1, we normalize MI:</p></li>
 </ul>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 NMI(Y, \hat{Y}) = \frac{MI(Y, \hat{Y})}{\sqrt{H(Y) H(\hat{Y})}}
-\end{equation*}</p>
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -1807,6 +1808,7 @@ Normalized Mutual Information (NMI - sklearn): 0.6190
 </div>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1872,39 +1874,25 @@ Normalized Mutual Information (NMI - sklearn): 0.6190
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Unsupervised Learning</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-methods">Machine Learning Methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-5-unsupervised-learning">Module 5: Unsupervised Learning</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-farhad-pourkamali">Instructor: Farhad Pourkamali</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering">K-means clustering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering-and-initialization">K-means clustering and initialization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-optimal-number-of-clusters">Finding the optimal number of clusters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-silhouette-score-instead-of-inertia">Using silhouette score instead of inertia</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan">DBSCAN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-mixtures">Gaussian Mixtures</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-clustering-with-normalized-mutual-information-nmi">Evaluating Clustering with Normalized Mutual Information (NMI)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contingency-table">Contingency Table</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-compute-entropy-of-true-labels">Step 1: Compute Entropy of True Labels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-compute-entropy-of-predicted-labels">Step 2: Compute Entropy of Predicted Labels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-compute-mutual-information">Step 3: Compute Mutual Information</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-compute-normalized-mutual-information-nmi">Step 4: Compute Normalized Mutual Information (NMI)</a></li>
 </ul>
 </li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#begin-equation-z-n1-z-n2-dots-z-nk-begin-bmatrix-boldsymbol-mu-1-boldsymbol-mu-2-vdots-boldsymbol-mu-k-end-bmatrix">\begin{equation*}
-[z_{n1}, z_{n2}, \dots, z_{nK}]
-\begin{bmatrix}
-\boldsymbol{\mu}_1 \
-\boldsymbol{\mu}_2 \
-\vdots \
-\boldsymbol{\mu}_K
-\end{bmatrix}</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#k-means-clustering-and-initialization">K-means clustering and initialization</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-optimal-number-of-clusters">Finding the optimal number of clusters</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-silhouette-score-instead-of-inertia">Using silhouette score instead of inertia</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dbscan">DBSCAN</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-mixtures">Gaussian Mixtures</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-clustering-with-normalized-mutual-information-nmi">Evaluating Clustering with Normalized Mutual Information (NMI)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contingency-table">Contingency Table</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-compute-entropy-of-true-labels">Step 1: Compute Entropy of True Labels</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-compute-entropy-of-predicted-labels">Step 2: Compute Entropy of Predicted Labels</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-compute-mutual-information">Step 3: Compute Mutual Information</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-4-compute-normalized-mutual-information-nmi">Step 4: Compute Normalized Mutual Information (NMI)</a></li>
-</ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>

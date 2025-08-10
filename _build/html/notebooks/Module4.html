@@ -201,7 +201,6 @@
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Parametric Classification Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module5.html">Unsupervised Learning</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="Module6-part1.html">Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module6-part2.html">Decision Trees and Random Forests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module6-part3.html">Gradient Boosting</a></li>
@@ -485,15 +484,19 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(C&gt;2\)</span>: multinomial/multiclass logistic regression <span class="math notranslate nohighlight">\(\rightarrow y\in\{1,2,\ldots,C\}\)</span></p></li>
 </ul>
 </li>
-<li><p>Recall the probability mass function (pmf) of the Bernoulli distribution
-\begin{equation*}
-Ber(y|\theta)=\begin{cases}\theta &amp;\text{ if } y=1\1-\theta &amp;\text{ if } y=0\end{cases}=\theta^y(1-\theta)^{1-y}
-\end{equation*}</p></li>
+<li><p>Recall the probability mass function (pmf) of the Bernoulli distribution</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+Ber(y|\theta)=\begin{cases}\theta &amp;\text{ if } y=1\\1-\theta &amp;\text{ if } y=0\end{cases}=\theta^y(1-\theta)^{1-y}
+\end{split}\]</div>
+<ul class="simple">
 <li><p>Binary logistic regression</p></li>
 </ul>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 p(y|\mathbf{x};\boldsymbol{\theta})=Ber(y|\color{red}{\sigma(f(\mathbf{x};\boldsymbol{\theta}))})
-\end{equation*}</p>
+\]</div>
 <ul class="simple">
 <li><p>The function <span class="math notranslate nohighlight">\(\color{red}{f(\mathbf{x}; \boldsymbol{\theta})}\)</span> is a linear combination of the input features, i.e., <span class="math notranslate nohighlight">\(f(\mathbf{x}; \boldsymbol{\theta}) = \mathbf{x}^\top \boldsymbol{\theta}\)</span>, which is transformed by the sigmoid function <span class="math notranslate nohighlight">\(\color{red}{\sigma(a) = \frac{1}{1 + e^{-a}}}\)</span> to map the linear output into a probability space</p></li>
 </ul>
@@ -526,12 +529,15 @@ p(y|\mathbf{x};\boldsymbol{\theta})=Ber(y|\color{red}{\sigma(f(\mathbf{x};\bolds
 <ul class="simple">
 <li><p>The derivative of <span class="math notranslate nohighlight">\(\sigma(a)\)</span> has a nice form</p></li>
 </ul>
-<p>\begin{align*}
-\sigma(a)&amp;=\frac{1}{1+e^{-a}}=(1+e^{-a})^{-1}\
-\frac{d}{da}\sigma(a)&amp;=(-1)(1+e^{-a})^{-2}(1+e^{-a})’\
-\frac{d}{da}\sigma(a)&amp;=(-1)(1+e^{-a})^{-2}(-e^{-a})\
-\frac{d}{da}\sigma(a)&amp;=\frac{1}{1+e^{-a}}\frac{e^{-a}}{1+e^{-a}}=\sigma(a)(1-\sigma(a))
-\end{align*}</p>
+<div class="math notranslate nohighlight">
+\[\sigma(a)=\frac{1}{1+e^{-a}}=(1+e^{-a})^{-1}\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{d}{da}\sigma(a)=(-1)(1+e^{-a})^{-2}(1+e^{-a})'\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{d}{da}\sigma(a)=(-1)(1+e^{-a})^{-2}(-e^{-a})\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{d}{da}\sigma(a)=\frac{1}{1+e^{-a}}\frac{e^{-a}}{1+e^{-a}}=\sigma(a)(1-\sigma(a))
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
@@ -630,28 +636,35 @@ p(y|\mathbf{x};\boldsymbol{\theta})=Ber(y|\color{red}{\sigma(f(\mathbf{x};\bolds
 <section id="optimal-decision-rule-for-predicting-y-1">
 <h3>Optimal Decision Rule for Predicting <span class="math notranslate nohighlight">\(y=1\)</span><a class="headerlink" href="#optimal-decision-rule-for-predicting-y-1" title="Link to this heading">#</a></h3>
 <hr style="border:2px solid gray">
-<ul class="simple">
-<li><p><strong>Starting point - Probability comparison</strong>:<br />
-The optimal decision rule is based on comparing the probabilities of the two classes. To predict <span class="math notranslate nohighlight">\(y=1\)</span>, we check if:
-$<span class="math notranslate nohighlight">\(p(y=1|\mathbf{x}) &gt; p(y=0|\mathbf{x})\)</span>$</p></li>
-<li><p><strong>Log-odds transformation</strong>:<br />
-Using the definition of log-odds (logit), the inequality can be rewritten as:
-$<span class="math notranslate nohighlight">\(\log \frac{p(y=1|\mathbf{x})}{p(y=0|\mathbf{x})} &gt; 0\)</span><span class="math notranslate nohighlight">\(
-This shows that predicting \)</span>y=1$ is equivalent to determining whether the log-odds are positive</p></li>
-<li><p><strong>Linear form of log-odds</strong>:<br />
-For logistic regression, the log-odds are given by:
-$<span class="math notranslate nohighlight">\(\log \frac{p(y=1|\mathbf{x})}{p(y=0|\mathbf{x})} = \boldsymbol{\theta}^\top \mathbf{x}\)</span><span class="math notranslate nohighlight">\(
-Thus, the decision rule reduces to:
-\)</span><span class="math notranslate nohighlight">\(\boldsymbol{\theta}^\top \mathbf{x} &gt; 0.\)</span>$</p></li>
-<li><p><strong>Interpretation of the rule</strong>:</p>
 <ul>
+<li><p><strong>Starting point - Probability comparison</strong>:<br />
+The optimal decision rule is based on comparing the probabilities of the two classes. To predict <span class="math notranslate nohighlight">\(y=1\)</span>, we check if:</p>
+<div class="math notranslate nohighlight">
+\[p(y=1|\mathbf{x}) &gt; p(y=0|\mathbf{x})\]</div>
+</li>
+<li><p><strong>Log-odds transformation</strong>:<br />
+Using the definition of log-odds (logit), the inequality can be rewritten as:</p>
+<div class="math notranslate nohighlight">
+\[\log \frac{p(y=1|\mathbf{x})}{p(y=0|\mathbf{x})} &gt; 0\]</div>
+<p>This shows that predicting <span class="math notranslate nohighlight">\(y=1\)</span> is equivalent to determining whether the log-odds are positive</p>
+</li>
+<li><p><strong>Linear form of log-odds</strong>:<br />
+For logistic regression, the log-odds are given by:</p>
+<div class="math notranslate nohighlight">
+\[\log \frac{p(y=1|\mathbf{x})}{p(y=0|\mathbf{x})} = \boldsymbol{\theta}^\top \mathbf{x}\]</div>
+<p>Thus, the decision rule reduces to:</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\theta}^\top \mathbf{x} &gt; 0.\]</div>
+</li>
+<li><p><strong>Interpretation of the rule</strong>:</p>
+<ul class="simple">
 <li><p>If <span class="math notranslate nohighlight">\(\boldsymbol{\theta}^\top \mathbf{x} &gt; 0\)</span>, we predict <span class="math notranslate nohighlight">\(y=1\)</span></p></li>
 <li><p>If <span class="math notranslate nohighlight">\(\boldsymbol{\theta}^\top \mathbf{x} \leq 0\)</span>, we predict <span class="math notranslate nohighlight">\(y=0\)</span><br />
 This shows that the <strong>decision boundary</strong> is defined by the hyperplane <span class="math notranslate nohighlight">\(\boldsymbol{\theta}^\top \mathbf{x} = 0\)</span>, which separates the feature space into two regions</p></li>
 </ul>
 </li>
 <li><p><strong>Geometric intuition</strong>:</p>
-<ul>
+<ul class="simple">
 <li><p>The vector <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> determines the orientation of the decision boundary in the feature space</p></li>
 <li><p>The magnitude of <span class="math notranslate nohighlight">\(\boldsymbol{\theta}^\top \mathbf{x}\)</span> indicates how confidently a sample is classified, with larger values implying higher certainty</p></li>
 </ul>
@@ -2099,7 +2112,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <li><p>The first row of this matrix considers non-5 images (negative class)</p></li>
 <li><p>The second row considers the images of 5s (positive class)</p></li>
 </ul>
-  <img src="https://github.com/farhad-pourkamali/MATH6388/blob/main/images/confusion_matrix.png?raw=true\" width=300>
+  <img src="https://github.com/farhad-pourkamali/MATH6388/blob/main/images/confusion_matrix.png?raw=true\" width=400>
 </li>
 </ul>
 <div class="cell docutils container">
@@ -2140,9 +2153,10 @@ Recall: 0.65
 </ul>
 </li>
 </ul>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 S(\mathbf{x}) \geq \tau
-\end{equation}</p>
+\]</div>
 <p>and negative otherwise</p>
 <ul class="simple">
 <li><p>High Threshold <span class="math notranslate nohighlight">\(\tau\)</span> (e.g., 0.9): Only very confident positive predictions are classified as positive → High precision, low recall</p></li>
@@ -2178,9 +2192,10 @@ S(\mathbf{x}) \geq \tau
 </ul>
 </li>
 </ul>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 AP = \sum_{i=1}^{n} (R_i - R_{i-1}) P_i
-\end{equation}</p>
+\]</div>
 <p>Where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(P_i\)</span> is the precision at recall <span class="math notranslate nohighlight">\(R_i\)</span></p></li>
@@ -2194,31 +2209,36 @@ AP = \sum_{i=1}^{n} (R_i - R_{i-1}) P_i
 <section id="multinomial-logistic-regression">
 <h3>Multinomial Logistic Regression<a class="headerlink" href="#multinomial-logistic-regression" title="Link to this heading">#</a></h3>
 <hr style="border:2px solid gray">
-<ul class="simple">
+<ul>
 <li><p><strong>Generalizing binary classification to multiple classes</strong>:<br />
 To represent a distribution over <span class="math notranslate nohighlight">\(C\)</span> possible classes <span class="math notranslate nohighlight">\(y \in \{1, \ldots, C\}\)</span>, we use the categorical distribution, which generalizes the Bernoulli distribution for <span class="math notranslate nohighlight">\(C &gt; 2\)</span>. The categorical distribution is given by:
 $<span class="math notranslate nohighlight">\(\text{Cat}(y|\boldsymbol{\theta}) = \prod_{c=1}^C \theta_c^{I(y=c)}\)</span>$
 where:</p>
-<ul>
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\boldsymbol{\theta} = [\theta_1, \ldots, \theta_C]\)</span> is the probability vector such that <span class="math notranslate nohighlight">\(0 \leq \theta_c \leq 1\)</span> and  <span class="math notranslate nohighlight">\(\sum_{c=1}^C \theta_c = 1\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(I(y=c)\)</span> is an indicator function that equals 1 if <span class="math notranslate nohighlight">\(y = c\)</span>, and 0 otherwise</p></li>
 </ul>
 </li>
 <li><p><strong>Modeling class probabilities</strong>:<br />
-A multinomial logistic regression model represents the probability of class <span class="math notranslate nohighlight">\(y\)</span> as:
-$<span class="math notranslate nohighlight">\(p(y|\mathbf{x}; \boldsymbol{\theta}) = \text{Cat}\big(y|\color{red}{\text{softmax}\big(f(\mathbf{x}; \boldsymbol{\theta})\big)}\big)\)</span>$</p></li>
+A multinomial logistic regression model represents the probability of class <span class="math notranslate nohighlight">\(y\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[p(y|\mathbf{x}; \boldsymbol{\theta}) = \text{Cat}\big(y|\color{red}{\text{softmax}\big(f(\mathbf{x}; \boldsymbol{\theta})\big)}\big)\]</div>
+</li>
 <li><p><strong>Softmax transformation</strong>:</p>
 <ul>
 <li><p>Let <span class="math notranslate nohighlight">\(\mathbf{a} = \mathbf{W}\mathbf{x} \in \mathbb{R}^C\)</span> represent the logits (the unnormalized scores for each class)</p></li>
-<li><p>The <strong>softmax function</strong> transforms the logits into a valid probability distribution over <span class="math notranslate nohighlight">\(C\)</span> classes:
-$<span class="math notranslate nohighlight">\(\boldsymbol{\theta} = \text{softmax}(\mathbf{a}) = \Big[\frac{e^{a_1}}{\sum_{c'=1}^C e^{a_{c'}}}, \ldots, \frac{e^{a_C}}{\sum_{c'=1}^C e^{a_{c'}}}\Big]\)</span>$</p></li>
+<li><p>The <strong>softmax function</strong> transforms the logits into a valid probability distribution over <span class="math notranslate nohighlight">\(C\)</span> classes:</p>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\theta} = \text{softmax}(\mathbf{a}) = \Big[\frac{e^{a_1}}{\sum_{c'=1}^C e^{a_{c'}}}, \ldots, \frac{e^{a_C}}{\sum_{c'=1}^C e^{a_{c'}}}\Big]\]</div>
+</li>
 </ul>
 </li>
 <li><p><strong>Cross-entropy loss function</strong>:<br />
-To train the model, we use the <strong>cross-entropy loss</strong>, which measures the difference between the predicted probability distribution and the true label:
-$<span class="math notranslate nohighlight">\(\mathcal{L} = -\sum_{c=1}^C I(y_n = c) \log p(y_n = c|\mathbf{x}_n; \boldsymbol{\theta})\)</span>$
-where:</p>
-<ul>
+To train the model, we use the <strong>cross-entropy loss</strong>, which measures the difference between the predicted probability distribution and the true label:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{L} = -\sum_{c=1}^C I(y_n = c) \log p(y_n = c|\mathbf{x}_n; \boldsymbol{\theta})\]</div>
+<p>where:</p>
+<ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(I(y_n = c)\)</span> indicates whether the true class for the <span class="math notranslate nohighlight">\(n\)</span>-th example is <span class="math notranslate nohighlight">\(c\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(p(y_n = c|\mathbf{x}_n; \boldsymbol{\theta})\)</span> is the predicted probability of class <span class="math notranslate nohighlight">\(c\)</span> for the <span class="math notranslate nohighlight">\(n\)</span>-th example</p></li>
 <li><p>Cross-entropy effectively captures the “distance” between the predicted distribution and the true one by focusing on the log-probability of the correct class</p></li>

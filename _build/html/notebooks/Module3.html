@@ -201,7 +201,6 @@
 
 <li class="toctree-l1"><a class="reference internal" href="Module4.html">Parametric Classification Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module5.html">Unsupervised Learning</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="Module6-part1.html">Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module6-part2.html">Decision Trees and Random Forests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module6-part3.html">Gradient Boosting</a></li>
@@ -488,7 +487,7 @@ document.write(`
 <li><p>Gradient descent (GD) and variants (<a class="reference external" href="https://youtu.be/0EV6UoKM4AM">https://youtu.be/0EV6UoKM4AM</a>)</p></li>
 <li><p>Nonlinear extension and regularization (<a class="reference external" href="https://youtu.be/OIoe4OQo1ko">https://youtu.be/OIoe4OQo1ko</a>)</p></li>
 </ol>
-<img src="https://github.com/farhad-pourkamali/MATH4388Online/blob/main/images/ml_general.png?raw=true" width=500>
+<img src="https://github.com/farhad-pourkamali/MATH4388Online/blob/main/images/ml_general.png?raw=true" width=600>
 </section>
 </section>
 </section>
@@ -503,9 +502,10 @@ document.write(`
 <li><p>Objective: Choose <span class="math notranslate nohighlight">\(\theta_0,\theta_1\)</span> such that <span class="math notranslate nohighlight">\(f(x_n)\)</span> is close to <span class="math notranslate nohighlight">\(y_n\)</span></p></li>
 <li><p>Mean squared error (MSE):</p></li>
 </ul>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 \mathcal{L}(\theta_0, \theta_1)=\frac{1}{N}\sum_{n=1}^N \big(y_n - f(x_n)\big)^2
-\end{equation}</p>
+\]</div>
 </section>
 <section id="solving-the-optimization-problem">
 <h2>Solving the optimization problem<a class="headerlink" href="#solving-the-optimization-problem" title="Link to this heading">#</a></h2>
@@ -1048,8 +1048,11 @@ memory usage: 780.0+ bytes
 <li><p>See <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html">https://scikit-learn.org/stable/modules/model_evaluation.html</a></p></li>
 </ul>
 </li>
-<li><p>Mean squared error
-$<span class="math notranslate nohighlight">\(\text{MSE}(\mathbf{y}, \hat{\mathbf{y}})=\frac{1}{N_{\text{test}}}\sum_{n=1}^{N_{\text{test}}} \big(y_n - \hat{y}_n\big)^2\)</span>$</p></li>
+<li><p>Mean squared error</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\text{MSE}(\mathbf{y}, \hat{\mathbf{y}})=\frac{1}{N_{\text{test}}}\sum_{n=1}^{N_{\text{test}}} \big(y_n - \hat{y}_n\big)^2\]</div>
+<ul class="simple">
 <li><p>The value you get after calculating MSE is a squared unit of output</p></li>
 <li><p>If you have outliers in the data set, then it penalizes the outliers most</p></li>
 <li><p>Possible solution: the output value you get is in the same unit as the required output variable</p></li>
@@ -1126,8 +1129,9 @@ $<span class="math notranslate nohighlight">\(\text{MSE}(\mathbf{y}, \hat{\mathb
 <ul class="simple">
 <li><p>Definition</p></li>
 </ul>
-<p>\begin{equation}\text{EV}(\mathbf{y}, \hat{\mathbf{y}}) = 1 - \frac{Var{ \mathbf{y} - \hat{\mathbf{y}}}}{Var{\mathbf{y}}}
-\end{equation}</p>
+<div class="math notranslate nohighlight">
+\[\text{EV}(\mathbf{y}, \hat{\mathbf{y}}) = 1 - \frac{Var\{ \mathbf{y} - \hat{\mathbf{y}}\}}{Var\{\mathbf{y}\}}
+\]</div>
 <ul class="simple">
 <li><p>The best possible score is 1.0, lower values are worse.</p></li>
 <li><p>When the residuals (i.e., <span class="math notranslate nohighlight">\(e_n=y_n-\hat{y}_n\)</span>) have zero mean, the explained variance score and the <span class="math notranslate nohighlight">\(R^2\)</span> score are identical.</p></li>
@@ -1219,8 +1223,11 @@ $<span class="math notranslate nohighlight">\(\text{MSE}(\mathbf{y}, \hat{\mathb
 <div class="math notranslate nohighlight">
 \[\nabla \mathcal{L}(\boldsymbol{\theta})= \frac{2}{N}\mathbf{X}^T\big(\mathbf{X}\boldsymbol{\theta} - \mathbf{y}\big)\]</div>
 <ul class="simple">
-<li><p>GD step with fixed learning rate
-$<span class="math notranslate nohighlight">\(\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t - \eta \nabla \mathcal{L}(\boldsymbol{\theta}_t)=\boldsymbol{\theta}_t - \eta \frac{2}{N}\mathbf{X}^T\big(\mathbf{X}\boldsymbol{\theta}_t - \mathbf{y}\big) \)</span>$</p></li>
+<li><p>GD step with fixed learning rate</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t - \eta \nabla \mathcal{L}(\boldsymbol{\theta}_t)=\boldsymbol{\theta}_t - \eta \frac{2}{N}\mathbf{X}^T\big(\mathbf{X}\boldsymbol{\theta}_t - \mathbf{y}\big) \]</div>
+<ul class="simple">
 <li><p>This formula involves calculations over the full training set <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> –&gt; batch or full GD</p></li>
 <li><p>An epoch means one complete pass of the training data set</p></li>
 </ul>
@@ -1585,14 +1592,14 @@ where the noise represents random variations added to simulate real-world data.<
 </ul>
 </li>
 <li><p>By discouraging large weights, it prevents the model from overfitting small variations or noise in the training data.</p></li>
-<li><p>Mathematical representation
-$<span class="math notranslate nohighlight">\(\mathcal{L}(\boldsymbol{\theta})=\|\mathbf{y}-\mathbf{X}\boldsymbol{\theta}\|_2^2+\lambda C(\boldsymbol{\theta})\)</span>$</p>
-<ul>
-<li><p><span class="math notranslate nohighlight">\(\lambda\geq 0\)</span> is the regularization parameter (i.e., hyperparameter) and <span class="math notranslate nohighlight">\(C(\boldsymbol{\theta})\)</span> is some form of model complexity.</p></li>
-<li><p>We can quantify complexity using the L2 regularization formula, i.e., the sum of the squares of all weights</p></li>
+<li><p>Mathematical representation</p></li>
 </ul>
-</li>
-</ul>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}(\boldsymbol{\theta})=\|\mathbf{y}-\mathbf{X}\boldsymbol{\theta}\|_2^2+\lambda C(\boldsymbol{\theta})\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* $\lambda\geq 0$ is the regularization parameter (i.e., hyperparameter) and $C(\boldsymbol{\theta})$ is some form of model complexity. 
+* We can quantify complexity using the L2 regularization formula, i.e., the sum of the squares of all weights
+</pre></div>
+</div>
 <div class="math notranslate nohighlight">
 \[\ell_2 \text{ regularization}: C(\boldsymbol{\theta})=\|\boldsymbol{\theta}\|_2^2=\theta_0^2+\theta_1^2+\theta_2^2+\ldots\]</div>
 <div class="cell docutils container">

@@ -201,7 +201,6 @@
 
 <li class="toctree-l1"><a class="reference internal" href="Module4.html">Parametric Classification Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module5.html">Unsupervised Learning</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="Module6-part1.html">Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module6-part2.html">Decision Trees and Random Forests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module6-part3.html">Gradient Boosting</a></li>
@@ -684,9 +683,10 @@ document.write(`
 </div>
 </div>
 <p>For two vectors <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> (or columns of a DataFrame), the Pearson correlation coefficient <span class="math notranslate nohighlight">\(\rho\)</span> is given by</p>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 \rho = \frac{\sum_{i=1}^{n} (x_i - \bar{\mathbf{x}})(y_i - \bar{\mathbf{y}})}{\sqrt{\sum_{i=1}^{n} (x_i - \bar{\mathbf{x}})^2} \cdot \sqrt{\sum_{i=1}^{n} (y_i - \bar{\mathbf{y}})^2}}
-\end{equation*}</p>
+\]</div>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\rho=1\)</span>: Perfect positive linear relationship</p></li>
 <li><p><span class="math notranslate nohighlight">\(\rho=-1\)</span>: Perfect negative linear relationship</p></li>
@@ -844,12 +844,14 @@ document.write(`
 </li>
 <li><p>Equations (<span class="math notranslate nohighlight">\(\mu\)</span> represents the mean and <span class="math notranslate nohighlight">\(\sigma\)</span> is the standard deviation)</p></li>
 </ul>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 z = \frac{x - \mu}{\sigma}
-\end{equation*}</p>
-<p>\begin{equation*}
-x’ = \frac{x - \min(x)}{\max(x) - \min(x)}
-\end{equation*}</p>
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+x' = \frac{x - \min(x)}{\max(x) - \min(x)}
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
@@ -913,9 +915,10 @@ x’ = \frac{x - \min(x)}{\max(x) - \min(x)}
 <ul class="simple">
 <li><p>Hence, the regression model works in the following form</p></li>
 </ul>
-<p>\begin{equation*}
-y = \beta_0 + \beta_1 \cdot \text{horsepower} + \beta_2 \cdot \text{weight} + \beta_3 \cdot \text{horsepower}^2 + \beta_4 \cdot \text{horsepower} \cdot \text{weight} + \beta_5 \cdot \text{weight}^2
-\end{equation*}</p>
+<div class="math notranslate nohighlight">
+\[
+y = \beta_0 + \beta_1 \cdot \text{horsepower} + \beta_2 \cdot \text{weight} + \beta_3 \cdot \text{horsepower}^2 + \beta_4 \cdot \text{horsepower} \cdot \text{weight} + \beta_5 \cdot \text{weight}^2 
+\]</div>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="data-splitting-and-cross-validation">
@@ -1005,19 +1008,21 @@ y = \beta_0 + \beta_1 \cdot \text{horsepower} + \beta_2 \cdot \text{weight} + \b
 <ul class="simple">
 <li><p>Machine learning models have hyperparameters that need to be adjusted for optimal performance. For example, consider the polynomial transformation of the input features (degree 1 vs. 2)</p></li>
 </ul>
-<p>\begin{equation}
+<div class="math notranslate nohighlight">
+\[
 \text{mpg} = \beta_0 + \beta_1 \cdot \text{horsepower} + \beta_2 \cdot \text{weight}
-\end{equation}</p>
+\]</div>
 <p>or</p>
-<p>\begin{equation*}
-y = \beta_0 + \beta_1 \cdot \text{horsepower} + \beta_2 \cdot \text{weight} + \beta_3 \cdot \text{horsepower}^2 + \beta_4 \cdot \text{horsepower} \cdot \text{weight} + \beta_5 \cdot \text{weight}^2
-\end{equation*}</p>
+<div class="math notranslate nohighlight">
+\[
+y = \beta_0 + \beta_1 \cdot \text{horsepower} + \beta_2 \cdot \text{weight} + \beta_3 \cdot \text{horsepower}^2 + \beta_4 \cdot \text{horsepower} \cdot \text{weight} + \beta_5 \cdot \text{weight}^2 
+\]</div>
 <ul class="simple">
 <li><p>If you only have train and test sets, you might end up overfitting your model to the test set during hyperparameter tuning.</p></li>
 <li><p>This happens because you are repeatedly evaluating on the test set and indirectly “learning” its characteristics.</p></li>
 <li><p>A separate validation or development set prevents this.</p></li>
 </ul>
-<img src="https://github.com/farhad-pourkamali/MATH4388Online/blob/main/images/model_selection.png?raw=true" width=350>
+<img src="https://github.com/farhad-pourkamali/MATH4388Online/blob/main/images/model_selection.png?raw=true" width=400>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assuming you already have this:</span>
@@ -1068,7 +1073,7 @@ y = \beta_0 + \beta_1 \cdot \text{horsepower} + \beta_2 \cdot \text{weight} + \b
 </ul>
 </li>
 </ul>
-<img src="https://scikit-learn.org/stable/_images/grid_search_cross_validation.png" width=400>
+<img src="https://scikit-learn.org/stable/_images/grid_search_cross_validation.png" width=500>
 <ul class="simple">
 <li><p>Benefits of CV:</p>
 <ul>
@@ -1252,7 +1257,7 @@ y = \beta_0 + \beta_1 \cdot \text{horsepower} + \beta_2 \cdot \text{weight} + \b
 <ul class="simple">
 <li><p>A pipeline is a way to chain together multiple data transformations and a final estimator (i.e., a machine learning model) into a single, cohesive object.</p></li>
 </ul>
-<img src="https://github.com/farhad-pourkamali/MATH4388Online/blob/main/images/pipeline.png?raw=true" width=500>
+<img src="https://github.com/farhad-pourkamali/MATH4388Online/blob/main/images/pipeline.png?raw=true" width=600>
 <ul class="simple">
 <li><p>It simplifies your code and ensures that the same steps are applied consistently during both training and prediction.</p></li>
 <li><p>Syntax</p></li>

@@ -201,7 +201,6 @@
 
 <li class="toctree-l1"><a class="reference internal" href="Module4.html">Parametric Classification Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module5.html">Unsupervised Learning</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="Module6-part1.html">Support Vector Machines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module6-part2.html">Decision Trees and Random Forests</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Module6-part3.html">Gradient Boosting</a></li>
@@ -1152,13 +1151,15 @@ a
 <img src="https://github.com/farhad-pourkamali/MATH4388Online/blob/main/images/OOP.png?raw=true" width=500><ul class="simple">
 <li><p>To explain OOP, let us consider the simple case of linear regression with one input feature, that is <span class="math notranslate nohighlight">\(f(x;\beta_0,\beta_1) = \beta_0 + \beta_1 x\)</span>. Given a set of input-output pairs <span class="math notranslate nohighlight">\((x_1, y_1), \ldots, (x_N, y_N)\)</span>, this is how you can find the intercept and slope: (Equation 3.4 of An Introduction to Statistical Learning with Applications in Python or ISL: <a class="reference external" href="https://www.statlearning.com/">https://www.statlearning.com/</a>)</p></li>
 </ul>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 \beta_1^* = \frac{\sum_{n=1}^N (x_n - \bar{x})(y_n - \bar{y})}{\sum_{n=1}^N (x_n - \bar{x})^2}
-\end{equation*}</p>
+\]</div>
 <p>and</p>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 \beta_0^* = \bar{y} - \beta_1^* \bar{x}
-\end{equation*}</p>
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(\bar{x}\)</span> and <span class="math notranslate nohighlight">\(\bar{y}\)</span> are sample means.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1460,9 +1461,9 @@ $<span class="math notranslate nohighlight">\(\mathbf{a}=\begin{bmatrix}a_1\\a_2
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>Method 1
-$<span class="math notranslate nohighlight">\(\begin{bmatrix}a_{11} &amp; \ldots &amp; a_{1n}\\\vdots &amp; &amp; \vdots\\a_{m1}&amp;\ldots &amp;a_{mn}\end{bmatrix}\begin{bmatrix}x_1\\\vdots\\x_n\end{bmatrix}=x_1\begin{bmatrix}a_{11}\\\vdots\\a_{m1}\end{bmatrix}+\ldots+x_n\begin{bmatrix}a_{1n}\\\vdots\\a_{mn}\end{bmatrix}\)</span>$</p></li>
+<span class="math notranslate nohighlight">\(\begin{bmatrix}a_{11} &amp; \ldots &amp; a_{1n}\\\vdots &amp; &amp; \vdots\\a_{m1}&amp;\ldots &amp;a_{mn}\end{bmatrix}\begin{bmatrix}x_1\\\vdots\\x_n\end{bmatrix}=x_1\begin{bmatrix}a_{11}\\\vdots\\a_{m1}\end{bmatrix}+\ldots+x_n\begin{bmatrix}a_{1n}\\\vdots\\a_{mn}\end{bmatrix}\)</span></p></li>
 <li><p>Method 2
-$<span class="math notranslate nohighlight">\(\begin{bmatrix}a_{11} &amp; \ldots &amp; a_{1n}\\\vdots &amp; &amp; \vdots\\a_{m1}&amp;\ldots &amp;a_{mn}\end{bmatrix}\begin{bmatrix}x_1\\\vdots\\x_n\end{bmatrix}=\begin{bmatrix}\sum_{i=1}^n a_{1i}x_i\\\vdots\\\sum_{i=1}^na_{mi}x_i\end{bmatrix}\)</span>$</p></li>
+<span class="math notranslate nohighlight">\(\begin{bmatrix}a_{11} &amp; \ldots &amp; a_{1n}\\\vdots &amp; &amp; \vdots\\a_{m1}&amp;\ldots &amp;a_{mn}\end{bmatrix}\begin{bmatrix}x_1\\\vdots\\x_n\end{bmatrix}=\begin{bmatrix}\sum_{i=1}^n a_{1i}x_i\\\vdots\\\sum_{i=1}^na_{mi}x_i\end{bmatrix}\)</span></p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
