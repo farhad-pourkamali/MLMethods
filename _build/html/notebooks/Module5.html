@@ -525,7 +525,8 @@ document.write(`
 <ul class="simple">
 <li><p>But, we don’t know the cluster centers, so we should minimize the following loss function</p></li>
 </ul>
-<p>\begin{equation*}\sum_{n=1}^N |\mathbf{x}<em>n - \boldsymbol{\mu}</em>{z_n}|_2^2\end{equation*}</p>
+<div class="math notranslate nohighlight">
+\[\sum_{n=1}^N \|\mathbf{x}_n - \boldsymbol{\mu}_{z_n}\|_2^2\]</div>
 <ul class="simple">
 <li><p>For a specific data point <span class="math notranslate nohighlight">\(\mathbf{x}_n\)</span>, we can rewrite:</p></li>
 </ul>
@@ -820,9 +821,10 @@ s_n = \frac{b_n - a_n}{\max(a_n, b_n)}
 <li><p><span class="math notranslate nohighlight">\(s_n \approx -1\)</span> indicates misclassified points.</p></li>
 </ul>
 <p>Finally, the overall Silhouette Score is the average across all data points:</p>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 S = \frac{1}{N} \sum_{n=1}^{N} s_n
-\end{equation*}</p>
+\]</div>
 <p>where <span class="math notranslate nohighlight">\(N\)</span> is the total number of samples</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1906,7 +1908,7 @@ Normalized Mutual Information (NMI - sklearn): 0.6190
   <div class="footer-item">
     
 <p class="component-author">
-By Farhad Pourkamali
+By Farhad Pourkamali, Ph.D.
 </p>
 
   </div>

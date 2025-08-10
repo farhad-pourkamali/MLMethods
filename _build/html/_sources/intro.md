@@ -13,6 +13,8 @@ Modern machine learning workflows integrate mathematics and code, and libraries 
 
 Throughout this course, you will learn about parametric regression and classification models, including linear and logistic regression, along with appropriate evaluation metrics. We will explore the concepts of bias and variance in machine learning methods and discuss the use of regularization techniques. The course will also cover advanced classical machine learning methods such as support vector machines, decision trees, and ensemble techniques like random forests. We will also introduce the fundamentals of unsupervised learning, focusing primarily on clustering methods. The course will conclude with an introduction to neural networks, including their underlying mathematics and basic implementation.
 
+These lecture notes are accompanied by short educational videos. Watch the full playlist here: [YouTube Playlist](https://www.youtube.com/playlist?list=PLLeO8f6PhlKZghwrdaw2pJgMpTLcS_LpG).
+
 Acknowledgment: This project is sponsored by the Colorado Open Educational Resources Program through the Colorado Commission on Higher Education (CCHE).
 
 ```{tableofcontents}
