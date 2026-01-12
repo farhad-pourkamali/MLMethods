@@ -14,6 +14,7 @@ jobs:
           python-version: '3.11'
       - run: pip install -U jupyter-book
       - run: jupyter-book clean . --all     # <--- important
+      - run: ls -R  # <--- Add this to see what GitHub actually sees
       - run: jupyter-book build .
       - uses: peaceiris/actions-gh-pages@v3
         with:

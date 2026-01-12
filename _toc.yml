@@ -2,16 +2,16 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro.md
+root: intro
 chapters:
-- file: notebooks/Module1.ipynb
-- file: notebooks/Module2.ipynb
-- file: notebooks/Module3.ipynb
-- file: notebooks/Module4.ipynb
-- file: notebooks/Module5.ipynb
-- file: notebooks/Module6-part1.ipynb
-- file: notebooks/Module6-part2.ipynb
-- file: notebooks/Module6-part3.ipynb
-- file: notebooks/Module7-part1.ipynb
-- file: notebooks/Module7-part2.ipynb
-- file: notebooks/Module7-part3.ipynb
+- file: notebooks/Module1
+- file: notebooks/Module2
+- file: notebooks/Module3
+- file: notebooks/Module4
+- file: notebooks/Module5
+- file: notebooks/Module6-part1
+- file: notebooks/Module6-part2
+- file: notebooks/Module6-part3
+- file: notebooks/Module7-part1
+- file: notebooks/Module7-part2
+- file: notebooks/Module7-part3
