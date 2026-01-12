@@ -62,6 +62,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Module7-part2';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Convolutional Neural Networks using Keras" href="Module7-part3.html" />
     <link rel="prev" title="Mathematical Building Blocks of Neural Networks" href="Module7-part1.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -199,12 +200,35 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="Module4.html">Parametric Classification Models</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module5.html">Unsupervised Learning</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module6-part1.html">Support Vector Machines</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module6-part2.html">Decision Trees and Random Forests</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module6-part3.html">Gradient Boosting</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module7-part1.html">Mathematical Building Blocks of Neural Networks</a></li>
+
+
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Building Neural Networks in Keras</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Module7-part3.html">Convolutional Neural Networks using Keras</a></li>
 </ul>
 
     </div>
@@ -417,19 +441,27 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Building Neural Networks in Keras</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-methods">Machine Learning Methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-7-neural-networks">Module 7: Neural Networks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-building-neural-networks-in-keras">Part 2: Building Neural Networks in Keras</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-farhad-pourkamali">Instructor: Farhad Pourkamali</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-based-learning">Gradient-based learning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backprop">Backprop</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backprop-and-chain-rule">Backprop and chain rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-mlps-with-keras">Implementing MLPs with Keras</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-what-happens-if-we-don-t-use-the-sigmoid-activation-function">Q1: What happens if we don’t use the “sigmoid” activation function?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-how-to-set-aside-validation-data">Q2: How to set aside validation data?</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#backprop">1. Backprop</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backprop-and-chain-rule">Backprop and chain rule</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-mlps-with-keras">2. Implementing MLPs with Keras</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-what-happens-if-we-don-t-use-the-sigmoid-activation-function">Q1: What happens if we don’t use the “sigmoid” activation function?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-how-to-set-aside-validation-data">Q2: How to set aside validation data?</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -468,8 +500,10 @@ document.write(`
 <li><p><span class="math notranslate nohighlight">\(g_t=\nabla J(\boldsymbol{\theta}_{t})\)</span> is the gradient of the loss function</p></li>
 </ul>
 </section>
-<section id="backprop">
-<h3>Backprop<a class="headerlink" href="#backprop" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="backprop">
+<h1>1. Backprop<a class="headerlink" href="#backprop" title="Link to this heading">#</a></h1>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>Backpropagation is the core algorithm used for training neural networks through gradient-based optimization.</p></li>
@@ -477,9 +511,8 @@ document.write(`
 <li><p>This is achieved efficiently using the chain rule from calculus, which allows the computation of derivatives for functions composed of many layers or nested functions.</p></li>
 <li><p>By recursively applying the chain rule from the output layer to the input layer, we obtain the gradients needed to update the model parameters via an optimization algorithm like gradient descent.</p></li>
 </ul>
-</section>
 <section id="backprop-and-chain-rule">
-<h3>Backprop and chain rule<a class="headerlink" href="#backprop-and-chain-rule" title="Link to this heading">#</a></h3>
+<h2>Backprop and chain rule<a class="headerlink" href="#backprop-and-chain-rule" title="Link to this heading">#</a></h2>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>Consider a 3-layer network with one unit in each layer and a scalar input</p></li>
@@ -528,8 +561,9 @@ df/dy: 5.0
 </div>
 </div>
 </section>
-<section id="implementing-mlps-with-keras">
-<h3>Implementing MLPs with Keras<a class="headerlink" href="#implementing-mlps-with-keras" title="Link to this heading">#</a></h3>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="implementing-mlps-with-keras">
+<h1>2. Implementing MLPs with Keras<a class="headerlink" href="#implementing-mlps-with-keras" title="Link to this heading">#</a></h1>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>Keras is a high-level Deep Learning API to build, train, and evaluate all sorts of neural networks</p>
@@ -891,9 +925,8 @@ Epoch 50/50
 <img alt="../_images/ebd968823916cac15b5e73ae201edbd52098b58d02316dfc680397f839fe33f9.png" src="../_images/ebd968823916cac15b5e73ae201edbd52098b58d02316dfc680397f839fe33f9.png" />
 </div>
 </div>
-</section>
 <section id="q1-what-happens-if-we-don-t-use-the-sigmoid-activation-function">
-<h3>Q1: What happens if we don’t use the “sigmoid” activation function?<a class="headerlink" href="#q1-what-happens-if-we-don-t-use-the-sigmoid-activation-function" title="Link to this heading">#</a></h3>
+<h2>Q1: What happens if we don’t use the “sigmoid” activation function?<a class="headerlink" href="#q1-what-happens-if-we-don-t-use-the-sigmoid-activation-function" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://keras.io/api/layers/core_layers/dense/">https://keras.io/api/layers/core_layers/dense/</a></p></li>
 <li><p><a class="reference external" href="https://keras.io/api/losses/probabilistic_losses/">https://keras.io/api/losses/probabilistic_losses/</a></p></li>
@@ -1063,7 +1096,7 @@ Epoch 50/50
 </div>
 </section>
 <section id="q2-how-to-set-aside-validation-data">
-<h3>Q2: How to set aside validation data?<a class="headerlink" href="#q2-how-to-set-aside-validation-data" title="Link to this heading">#</a></h3>
+<h2>Q2: How to set aside validation data?<a class="headerlink" href="#q2-how-to-set-aside-validation-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the model</span>
@@ -1301,7 +1334,6 @@ Epoch 50/50
 </div>
 </section>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1342,6 +1374,15 @@ Epoch 50/50
         <p class="prev-next-title">Mathematical Building Blocks of Neural Networks</p>
       </div>
     </a>
+    <a class="right-next"
+       href="Module7-part3.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Convolutional Neural Networks using Keras</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -1358,19 +1399,27 @@ Epoch 50/50
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Building Neural Networks in Keras</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-methods">Machine Learning Methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-7-neural-networks">Module 7: Neural Networks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-building-neural-networks-in-keras">Part 2: Building Neural Networks in Keras</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-farhad-pourkamali">Instructor: Farhad Pourkamali</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-based-learning">Gradient-based learning</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backprop">Backprop</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#backprop-and-chain-rule">Backprop and chain rule</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-mlps-with-keras">Implementing MLPs with Keras</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-what-happens-if-we-don-t-use-the-sigmoid-activation-function">Q1: What happens if we don’t use the “sigmoid” activation function?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-how-to-set-aside-validation-data">Q2: How to set aside validation data?</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#backprop">1. Backprop</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#backprop-and-chain-rule">Backprop and chain rule</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#implementing-mlps-with-keras">2. Implementing MLPs with Keras</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-what-happens-if-we-don-t-use-the-sigmoid-activation-function">Q1: What happens if we don’t use the “sigmoid” activation function?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-how-to-set-aside-validation-data">Q2: How to set aside validation data?</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
@@ -1384,7 +1433,7 @@ Epoch 50/50
   <div class="footer-item">
     
 <p class="component-author">
-By Farhad Pourkamali, Ph.D.
+By Farhad Pourkamali
 </p>
 
   </div>

@@ -200,12 +200,35 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="Module4.html">Parametric Classification Models</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module5.html">Unsupervised Learning</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module6-part1.html">Support Vector Machines</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module6-part2.html">Decision Trees and Random Forests</a></li>
+
+
+
+
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Gradient Boosting</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module7-part1.html">Mathematical Building Blocks of Neural Networks</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module7-part2.html">Building Neural Networks in Keras</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Module7-part3.html">Convolutional Neural Networks using Keras</a></li>
 </ul>
 
     </div>
@@ -418,20 +441,28 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Gradient Boosting</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-methods">Machine Learning Methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-6-advanced-machine-learning-models">Module 6: Advanced Machine Learning Models</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-random-forest-vs-gradient-boosting">Part 3: Random Forest vs. Gradient Boosting</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-farhad-pourkamali">Instructor: Farhad Pourkamali</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-bootstrap-aggregating-algorithm">Bagging (Bootstrap Aggregating) Algorithm</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-bagging-feature-randomness">Random Forest: Bagging + Feature Randomness</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-decrease-impurity-mdi">Mean Decrease Impurity (MDI)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting">Boosting</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosting-extension-of-boosting">Gradient Boosting – Extension of Boosting</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-bootstrap-aggregating-algorithm">1. Bagging (Bootstrap Aggregating) Algorithm</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-bagging-feature-randomness">Random Forest: Bagging + Feature Randomness</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-decrease-impurity-mdi">2. Mean Decrease Impurity (MDI)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting">3. Boosting</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosting-extension-of-boosting">Gradient Boosting – Extension of Boosting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -543,8 +574,10 @@ document.write(`
 </div>
 </div>
 </section>
-<section id="bagging-bootstrap-aggregating-algorithm">
-<h3>Bagging (Bootstrap Aggregating) Algorithm<a class="headerlink" href="#bagging-bootstrap-aggregating-algorithm" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bagging-bootstrap-aggregating-algorithm">
+<h1>1. Bagging (Bootstrap Aggregating) Algorithm<a class="headerlink" href="#bagging-bootstrap-aggregating-algorithm" title="Link to this heading">#</a></h1>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>Bagging is an ensemble method that builds multiple models on different bootstrapped subsets of the data and combines their outputs, typically by averaging (for regression) or majority vote (for classification).</p></li>
@@ -563,9 +596,8 @@ $<span class="math notranslate nohighlight">\(
 f^{\text{bagging}}(x) = \frac{1}{B} \sum_{b=1}^B f^{(b)}(x)
 \)</span>$</p></li>
 </ol>
-</section>
 <section id="random-forest-bagging-feature-randomness">
-<h3>Random Forest: Bagging + Feature Randomness<a class="headerlink" href="#random-forest-bagging-feature-randomness" title="Link to this heading">#</a></h3>
+<h2>Random Forest: Bagging + Feature Randomness<a class="headerlink" href="#random-forest-bagging-feature-randomness" title="Link to this heading">#</a></h2>
 <hr style="border:2px solid gray">
 <p>Random Forests build on the idea of bagging by also introducing <strong>randomness at the feature level</strong> to reduce correlation between individual trees:</p>
 <ul class="simple">
@@ -629,8 +661,9 @@ f^{\text{bagging}}(x) = \frac{1}{B} \sum_{b=1}^B f^{(b)}(x)
 </div>
 </div>
 </section>
-<section id="mean-decrease-impurity-mdi">
-<h3>Mean Decrease Impurity (MDI)<a class="headerlink" href="#mean-decrease-impurity-mdi" title="Link to this heading">#</a></h3>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="mean-decrease-impurity-mdi">
+<h1>2. Mean Decrease Impurity (MDI)<a class="headerlink" href="#mean-decrease-impurity-mdi" title="Link to this heading">#</a></h1>
 <hr style="border:2px solid gray">
 <ul>
 <li><p>Random Forests build numerous decision trees, making direct visualization and interpretation challenging.</p></li>
@@ -716,8 +749,8 @@ f^{\text{bagging}}(x) = \frac{1}{B} \sum_{b=1}^B f^{(b)}(x)
 </li>
 </ul>
 </section>
-<section id="boosting">
-<h3>Boosting<a class="headerlink" href="#boosting" title="Link to this heading">#</a></h3>
+<section class="tex2jax_ignore mathjax_ignore" id="boosting">
+<h1>3. Boosting<a class="headerlink" href="#boosting" title="Link to this heading">#</a></h1>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>Like bagging, boosting is a general ensemble approach that can be applied to many machine learning methods.</p></li>
@@ -756,9 +789,8 @@ $<span class="math notranslate nohighlight">\(
 <blockquote>
 <div><p><span class="math notranslate nohighlight">\(\lambda\)</span> is the <strong>learning rate</strong> (typically small, like 0.01), which controls how much each tree contributes.</p>
 </div></blockquote>
-</section>
 <section id="gradient-boosting-extension-of-boosting">
-<h3>Gradient Boosting – Extension of Boosting<a class="headerlink" href="#gradient-boosting-extension-of-boosting" title="Link to this heading">#</a></h3>
+<h2>Gradient Boosting – Extension of Boosting<a class="headerlink" href="#gradient-boosting-extension-of-boosting" title="Link to this heading">#</a></h2>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>Gradient Boosting generalizes the boosting algorithm by allowing optimization of any differentiable loss function.</p></li>
@@ -766,9 +798,10 @@ $<span class="math notranslate nohighlight">\(
 </ul>
 <ul>
 <li><p><strong>Pseudo-Residuals</strong>: For each data point <span class="math notranslate nohighlight">\(x_i\)</span>, the pseudo-residual at boosting step <span class="math notranslate nohighlight">\(b\)</span> is:</p>
-<p>\begin{equation*}
-r_{ib} = -\left[ \frac{\partial L(y_i, \hat{f}(x_i))}{\partial \hat{f}(x_i)} \right]<em>{\hat{f}(x) = \hat{f}</em>{b-1}(x)}
-\end{equation*}</p>
+<div class="math notranslate nohighlight">
+\[
+  r_{ib} = -\left[ \frac{\partial L(y_i, \hat{f}(x_i))}{\partial \hat{f}(x_i)} \right]_{\hat{f}(x) = \hat{f}_{b-1}(x)}
+  \]</div>
 <p>Where:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(L(y_i, \hat{f}(x_i))\)</span> is the loss function (e.g., squared error, huber loss).</p></li>
@@ -780,12 +813,14 @@ r_{ib} = -\left[ \frac{\partial L(y_i, \hat{f}(x_i))}{\partial \hat{f}(x_i)} \ri
 <ul class="simple">
 <li><p>For the <strong>squared error (quadratic loss)</strong>, the loss function for a single data point is:</p></li>
 </ul>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 L(y_i, \hat{f}(x_i)) = \frac{1}{2} (y_i - \hat{f}(x_i))^2
-\end{equation*}</p>
-<p>\begin{equation*}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
 r_{ib} = -\frac{\partial L(y_i, \hat{f}(x_i))}{\partial \hat{f}(x_i)}= -(- (y_i - \hat{f}(x_i))) = y_i - \hat{f}(x_i)
-\end{equation*}</p>
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -827,12 +862,11 @@ r_{ib} = -\frac{\partial L(y_i, \hat{f}(x_i))}{\partial \hat{f}(x_i)}= -(- (y_i 
 </div>
 </section>
 <section id="further-reading">
-<h3>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h3>
+<h2>Further Reading<a class="headerlink" href="#further-reading" title="Link to this heading">#</a></h2>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>Chapter 8 of An Introduction to Statistical Learning (ISL) with Python</p></li>
 </ul>
-</section>
 </section>
 </section>
 
@@ -900,20 +934,28 @@ r_{ib} = -\frac{\partial L(y_i, \hat{f}(x_i))}{\partial \hat{f}(x_i)}= -(- (y_i 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Gradient Boosting</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-methods">Machine Learning Methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-6-advanced-machine-learning-models">Module 6: Advanced Machine Learning Models</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3-random-forest-vs-gradient-boosting">Part 3: Random Forest vs. Gradient Boosting</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-farhad-pourkamali">Instructor: Farhad Pourkamali</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-bootstrap-aggregating-algorithm">Bagging (Bootstrap Aggregating) Algorithm</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-bagging-feature-randomness">Random Forest: Bagging + Feature Randomness</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-decrease-impurity-mdi">Mean Decrease Impurity (MDI)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting">Boosting</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosting-extension-of-boosting">Gradient Boosting – Extension of Boosting</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-bootstrap-aggregating-algorithm">1. Bagging (Bootstrap Aggregating) Algorithm</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-bagging-feature-randomness">Random Forest: Bagging + Feature Randomness</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-decrease-impurity-mdi">2. Mean Decrease Impurity (MDI)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#boosting">3. Boosting</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-boosting-extension-of-boosting">Gradient Boosting – Extension of Boosting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-reading">Further Reading</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
@@ -927,7 +969,7 @@ r_{ib} = -\frac{\partial L(y_i, \hat{f}(x_i))}{\partial \hat{f}(x_i)}= -(- (y_i 
   <div class="footer-item">
     
 <p class="component-author">
-By Farhad Pourkamali, Ph.D.
+By Farhad Pourkamali
 </p>
 
   </div>

@@ -200,12 +200,35 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="Module4.html">Parametric Classification Models</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module5.html">Unsupervised Learning</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module6-part1.html">Support Vector Machines</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module6-part2.html">Decision Trees and Random Forests</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module6-part3.html">Gradient Boosting</a></li>
+
+
+
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Mathematical Building Blocks of Neural Networks</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module7-part2.html">Building Neural Networks in Keras</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Module7-part3.html">Convolutional Neural Networks using Keras</a></li>
 </ul>
 
     </div>
@@ -418,6 +441,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Mathematical Building Blocks of Neural Networks</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-methods">Machine Learning Methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-7-neural-networks">Module 7: Neural Networks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-mathematical-building-blocks-of-neural-networks">Part 1: Mathematical Building Blocks of Neural Networks</a></li>
@@ -425,14 +449,19 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-part-1-feature-extractor">Example, part 1: feature extractor</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-part-2-classifier">Example, part 2: classifier</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feedforward-networks">Feedforward networks</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-example-the-xor-problem">Classical example: The XOR problem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Classical example: The XOR problem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-nonlinear-activation-functions">Why nonlinear activation functions?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-tour-of-activation-functions">A tour of activation functions</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#feedforward-networks">1. Feedforward networks</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-example-the-xor-problem">Classical example: The XOR problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Classical example: The XOR problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-nonlinear-activation-functions">Why nonlinear activation functions?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-tour-of-activation-functions">2. A tour of activation functions</a></li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -493,8 +522,10 @@ document.write(`
 <li><p>This is the key idea behind multilayer perceptron (MLP) for “structured” or “tabular” data <span class="math notranslate nohighlight">\(\mathbf{x}\in\mathbb{R}^D\)</span></p></li>
 </ul>
 <img src="https://github.com/farhad-pourkamali/MATH6388/blob/main/images/nn_example3.png?raw=true\" width=600></section>
-<section id="feedforward-networks">
-<h3>Feedforward networks<a class="headerlink" href="#feedforward-networks" title="Link to this heading">#</a></h3>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="feedforward-networks">
+<h1>1. Feedforward networks<a class="headerlink" href="#feedforward-networks" title="Link to this heading">#</a></h1>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>The information ﬂows through the function being evaluated from <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, through the intermediate computations, and ﬁnally to the output</p></li>
@@ -510,9 +541,8 @@ document.write(`
 </li>
 <li><p>The overall length of the chain gives the <strong>depth</strong>, and the dimensionality of hidden layers determines the <strong>width</strong> of the model</p></li>
 </ul>
-</section>
 <section id="classical-example-the-xor-problem">
-<h3>Classical example: The XOR problem<a class="headerlink" href="#classical-example-the-xor-problem" title="Link to this heading">#</a></h3>
+<h2>Classical example: The XOR problem<a class="headerlink" href="#classical-example-the-xor-problem" title="Link to this heading">#</a></h2>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>Learn a function that computes the exclusive OR of its two binary outputs (4 data points in <span class="math notranslate nohighlight">\(\mathbb{R}^2\)</span>)</p>
@@ -523,14 +553,14 @@ document.write(`
 </ul>
 <img src="https://github.com/farhad-pourkamali/MATH6388/blob/main/images/xor_part1.png?raw=true\" width=600></section>
 <section id="id1">
-<h3>Classical example: The XOR problem<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h2>Classical example: The XOR problem<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>This network correctly predicts all four class labels</p></li>
 </ul>
 <img src="https://github.com/farhad-pourkamali/MATH6388/blob/main/images/xor_part2.png?raw=true\" width=600></section>
 <section id="why-nonlinear-activation-functions">
-<h3>Why nonlinear activation functions?<a class="headerlink" href="#why-nonlinear-activation-functions" title="Link to this heading">#</a></h3>
+<h2>Why nonlinear activation functions?<a class="headerlink" href="#why-nonlinear-activation-functions" title="Link to this heading">#</a></h2>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>If we just use a linear activation function, then the whole model reduces to a regular linear model</p></li>
@@ -547,8 +577,9 @@ document.write(`
 </li>
 </ul>
 </section>
-<section id="a-tour-of-activation-functions">
-<h3>A tour of activation functions<a class="headerlink" href="#a-tour-of-activation-functions" title="Link to this heading">#</a></h3>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="a-tour-of-activation-functions">
+<h1>2. A tour of activation functions<a class="headerlink" href="#a-tour-of-activation-functions" title="Link to this heading">#</a></h1>
 <hr style="border:2px solid gray">
 <ul>
 <li><p>ReLU (Rectified Linear Unit)</p>
@@ -628,8 +659,6 @@ document.write(`
 </div>
 </div>
 </section>
-</section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -695,6 +724,7 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Mathematical Building Blocks of Neural Networks</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-methods">Machine Learning Methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-7-neural-networks">Module 7: Neural Networks</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1-mathematical-building-blocks-of-neural-networks">Part 1: Mathematical Building Blocks of Neural Networks</a></li>
@@ -702,14 +732,19 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-part-1-feature-extractor">Example, part 1: feature extractor</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-part-2-classifier">Example, part 2: classifier</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#feedforward-networks">Feedforward networks</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-example-the-xor-problem">Classical example: The XOR problem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Classical example: The XOR problem</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-nonlinear-activation-functions">Why nonlinear activation functions?</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-tour-of-activation-functions">A tour of activation functions</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#feedforward-networks">1. Feedforward networks</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-example-the-xor-problem">Classical example: The XOR problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Classical example: The XOR problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-nonlinear-activation-functions">Why nonlinear activation functions?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-tour-of-activation-functions">2. A tour of activation functions</a></li>
+</ul>
+
   </nav></div>
 
 </div></div>
@@ -723,7 +758,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By Farhad Pourkamali, Ph.D.
+By Farhad Pourkamali
 </p>
 
   </div>

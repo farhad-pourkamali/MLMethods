@@ -200,12 +200,35 @@
 
 
 <li class="toctree-l1"><a class="reference internal" href="Module4.html">Parametric Classification Models</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module5.html">Unsupervised Learning</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module6-part1.html">Support Vector Machines</a></li>
+
+
+
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Decision Trees and Random Forests</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module6-part3.html">Gradient Boosting</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module7-part1.html">Mathematical Building Blocks of Neural Networks</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module7-part2.html">Building Neural Networks in Keras</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Module7-part3.html">Convolutional Neural Networks using Keras</a></li>
 </ul>
 
     </div>
@@ -418,26 +441,33 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Decision Trees and Random Forests</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-methods">Machine Learning Methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-6-advanced-machine-learning-models">Module 6: Advanced Machine Learning Models</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-decision-trees-and-random-forests">Part 2: Decision Trees and Random Forests</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-farhad-pourkamali">Instructor: Farhad Pourkamali</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#root-node">🔷 Root Node</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gini-impurity">Gini Impurity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cart-in-scikit-learn">CART in Scikit-learn</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-decision-trees">✅ Advantages of Decision Trees</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disadvantages-of-decision-trees">⚠️ Disadvantages of Decision Trees</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-bootstrap-aggregating">Bagging (Bootstrap Aggregating)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forests">🌳 Random Forests</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-in-scikit-learn">🌳 Random Forest in Scikit-learn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-of-decision-trees">1. Structure of Decision Trees</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#root-node">🔷 Root Node</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gini-impurity">2. Gini Impurity</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cart-in-scikit-learn">3. CART in Scikit-learn</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-decision-trees">✅ Advantages of Decision Trees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disadvantages-of-decision-trees">⚠️ Disadvantages of Decision Trees</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-bootstrap-aggregating">4. Bagging (Bootstrap Aggregating)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forests">Random Forests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-in-scikit-learn">Random Forest in Scikit-learn</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -481,6 +511,11 @@ document.write(`
 </li>
 </ul>
 <img src="https://github.com/farhad-pourkamali/MATH4388Online/blob/main/images/tree.png?raw=true" width=250>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="structure-of-decision-trees">
+<h1>1. Structure of Decision Trees<a class="headerlink" href="#structure-of-decision-trees" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p><strong>Understanding decision trees with the Iris data set</strong></p>
 <ul>
@@ -526,7 +561,7 @@ document.write(`
 </ul>
 <img src="https://github.com/farhad-pourkamali/MATH4388Online/blob/main/images/DT.png?raw=true" width=500>
 <section id="root-node">
-<h4>🔷 Root Node<a class="headerlink" href="#root-node" title="Link to this heading">#</a></h4>
+<h2>🔷 Root Node<a class="headerlink" href="#root-node" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>This is the root node, where all 150 samples start.</p></li>
 <li><p>Gini impurity is high, indicating all three species are mixed.</p></li>
@@ -554,8 +589,8 @@ document.write(`
 </ul>
 </section>
 </section>
-<section id="gini-impurity">
-<h3>Gini Impurity<a class="headerlink" href="#gini-impurity" title="Link to this heading">#</a></h3>
+<section class="tex2jax_ignore mathjax_ignore" id="gini-impurity">
+<h1>2. Gini Impurity<a class="headerlink" href="#gini-impurity" title="Link to this heading">#</a></h1>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>The <strong>Gini impurity</strong> is a measure of how mixed the classes are at a particular node in a decision tree.</p>
@@ -577,9 +612,10 @@ document.write(`
 </ul>
 </li>
 </ul>
-<p>\begin{equation*}
+<div class="math notranslate nohighlight">
+\[
 \text{Gini} = \sum_k p_k (1 - p_k) = 1 - \sum_k p_k^2
-\end{equation*}</p>
+\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -1068,8 +1104,8 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 </section>
-<section id="cart-in-scikit-learn">
-<h3>CART in Scikit-learn<a class="headerlink" href="#cart-in-scikit-learn" title="Link to this heading">#</a></h3>
+<section class="tex2jax_ignore mathjax_ignore" id="cart-in-scikit-learn">
+<h1>3. CART in Scikit-learn<a class="headerlink" href="#cart-in-scikit-learn" title="Link to this heading">#</a></h1>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>Scikit-learn employs the Classification and Regression Trees (CART) algorithm to train decision trees for both classification and regression tasks.</p></li>
@@ -1175,9 +1211,8 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <img alt="../_images/5d9e9a03ecadaf4599890fda3342628e3e7ec0c8f01954026ee2015c55ca74c1.png" src="../_images/5d9e9a03ecadaf4599890fda3342628e3e7ec0c8f01954026ee2015c55ca74c1.png" />
 </div>
 </div>
-</section>
 <section id="advantages-of-decision-trees">
-<h3>✅ Advantages of Decision Trees<a class="headerlink" href="#advantages-of-decision-trees" title="Link to this heading">#</a></h3>
+<h2>✅ Advantages of Decision Trees<a class="headerlink" href="#advantages-of-decision-trees" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Decision trees often reflect how humans make decisions, which makes them easier to understand and trust.</p></li>
 <li><p>Trees can be visualized graphically, making their structure and logic clear — even to non-experts (especially if the tree is small).</p></li>
@@ -1185,61 +1220,68 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </ol>
 </section>
 <section id="disadvantages-of-decision-trees">
-<h3>⚠️ Disadvantages of Decision Trees<a class="headerlink" href="#disadvantages-of-decision-trees" title="Link to this heading">#</a></h3>
+<h2>⚠️ Disadvantages of Decision Trees<a class="headerlink" href="#disadvantages-of-decision-trees" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Compared to more advanced methods, a single decision tree typically offers lower accuracy on unseen data.</p></li>
 <li><p>Decision trees can be non-robust — small changes in the training data can lead to drastically different tree structures and predictions.</p></li>
 </ol>
 </section>
-<section id="bagging-bootstrap-aggregating">
-<h3>Bagging (Bootstrap Aggregating)<a class="headerlink" href="#bagging-bootstrap-aggregating" title="Link to this heading">#</a></h3>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="bagging-bootstrap-aggregating">
+<h1>4. Bagging (Bootstrap Aggregating)<a class="headerlink" href="#bagging-bootstrap-aggregating" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Bagging is an ensemble technique designed to improve the stability and accuracy of machine learning models, especially high-variance models like decision trees.</p></li>
 </ul>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p><strong>Bootstrap Sampling</strong>:<br />
 From the original data set <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> of size <span class="math notranslate nohighlight">\(N\)</span>, create <span class="math notranslate nohighlight">\(B\)</span> new data sets <span class="math notranslate nohighlight">\(\mathcal{D}_1, \mathcal{D}_2, ..., \mathcal{D}_B\)</span> by sampling with replacement. Each bootstrap sample is the same size <span class="math notranslate nohighlight">\(N\)</span>, but may contain duplicates.</p></li>
 <li><p><strong>Model Training</strong>:<br />
 Train a separate model <span class="math notranslate nohighlight">\(f_b\)</span> on each bootstrap sample <span class="math notranslate nohighlight">\(\mathcal{D}_b\)</span>.</p></li>
 <li><p><strong>Prediction Aggregation</strong>:</p>
-<ul class="simple">
-<li><p><strong>Regression</strong>: Use the average of predictions:
-\begin{equation*}
-\hat{y}(x) = \frac{1}{B} \sum_{b=1}^{B} f_b(x)
-\end{equation*}</p></li>
-<li><p><strong>Classification</strong>: Use majority voting:
-\begin{equation*}
-\hat{y}(x) = \text{mode}{f_1(x), f_2(x), …, f_B(x)}
-\end{equation*}</p></li>
+<ul>
+<li><p><strong>Regression</strong>: Use the average of predictions:</p>
+<div class="math notranslate nohighlight">
+\[
+     \hat{y}(x) = \frac{1}{B} \sum_{b=1}^{B} f_b(x)
+     \]</div>
+</li>
+<li><p><strong>Classification</strong>: Use majority voting:</p>
+<div class="math notranslate nohighlight">
+\[
+     \hat{y}(x) = \text{mode}\{f_1(x), f_2(x), ..., f_B(x)\}
+     \]</div>
+</li>
 </ul>
 </li>
 </ol>
-</section>
-</section>
-<hr class="docutils" />
 <section id="random-forests">
-<h2>🌳 Random Forests<a class="headerlink" href="#random-forests" title="Link to this heading">#</a></h2>
+<h2>Random Forests<a class="headerlink" href="#random-forests" title="Link to this heading">#</a></h2>
 <p><strong>Random Forests</strong> are an extension of bagging applied specifically to <strong>decision trees</strong> with additional randomness to further reduce correlation among trees.</p>
-<ol class="arabic simple">
+<ol class="arabic">
 <li><p><strong>Bootstrap Sampling</strong>:<br />
 As in bagging, draw multiple bootstrap data sets from the original training set.</p></li>
 <li><p><strong>Random Feature Selection at Each Split</strong>:<br />
 Instead of considering all features at each split, randomly select a subset of features for split evaluation. This increases diversity among the trees.</p></li>
 <li><p><strong>Prediction Aggregation</strong>:</p>
-<ul class="simple">
-<li><p><strong>Regression</strong>:
-\begin{equation*}
-\hat{y}(x) = \frac{1}{B} \sum_{b=1}^{B} f_b(x)
-\end{equation*}</p></li>
-<li><p><strong>Classification</strong>:
-\begin{equation*}
-\hat{y}(x) = \text{mode}{f_1(x), f_2(x), …, f_B(x)}
-\end{equation*}</p></li>
+<ul>
+<li><p><strong>Regression</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+     \hat{y}(x) = \frac{1}{B} \sum_{b=1}^{B} f_b(x)
+     \]</div>
+</li>
+<li><p><strong>Classification</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+     \hat{y}(x) = \text{mode}\{f_1(x), f_2(x), ..., f_B(x)\}
+     \]</div>
+</li>
 </ul>
 </li>
 </ol>
+</section>
 <section id="random-forest-in-scikit-learn">
-<h3>🌳 Random Forest in Scikit-learn<a class="headerlink" href="#random-forest-in-scikit-learn" title="Link to this heading">#</a></h3>
+<h2>Random Forest in Scikit-learn<a class="headerlink" href="#random-forest-in-scikit-learn" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>In <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code>, the <code class="docutils literal notranslate"><span class="pre">RandomForestClassifier</span></code> and <code class="docutils literal notranslate"><span class="pre">RandomForestRegressor</span></code> classes implement the <strong>Random Forest</strong> algorithm based on <strong>bagging</strong> and <strong>random feature selection</strong>.</p></li>
 </ul>
@@ -1335,7 +1377,6 @@ Instead of considering all features at each split, randomly select a subset of f
 </div>
 </section>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1401,26 +1442,33 @@ Instead of considering all features at each split, randomly select a subset of f
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Decision Trees and Random Forests</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-methods">Machine Learning Methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-6-advanced-machine-learning-models">Module 6: Advanced Machine Learning Models</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2-decision-trees-and-random-forests">Part 2: Decision Trees and Random Forests</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-farhad-pourkamali">Instructor: Farhad Pourkamali</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#root-node">🔷 Root Node</a></li>
-</ul>
-</li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gini-impurity">Gini Impurity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cart-in-scikit-learn">CART in Scikit-learn</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-decision-trees">✅ Advantages of Decision Trees</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#disadvantages-of-decision-trees">⚠️ Disadvantages of Decision Trees</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-bootstrap-aggregating">Bagging (Bootstrap Aggregating)</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forests">🌳 Random Forests</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-in-scikit-learn">🌳 Random Forest in Scikit-learn</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-of-decision-trees">1. Structure of Decision Trees</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#root-node">🔷 Root Node</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gini-impurity">2. Gini Impurity</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#cart-in-scikit-learn">3. CART in Scikit-learn</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-decision-trees">✅ Advantages of Decision Trees</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#disadvantages-of-decision-trees">⚠️ Disadvantages of Decision Trees</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bagging-bootstrap-aggregating">4. Bagging (Bootstrap Aggregating)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forests">Random Forests</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-in-scikit-learn">Random Forest in Scikit-learn</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
@@ -1434,7 +1482,7 @@ Instead of considering all features at each split, randomly select a subset of f
   <div class="footer-item">
     
 <p class="component-author">
-By Farhad Pourkamali, Ph.D.
+By Farhad Pourkamali
 </p>
 
   </div>

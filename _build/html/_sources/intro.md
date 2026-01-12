@@ -4,7 +4,7 @@
 - Course Name: Machine Learning Methods
 - Department of Mathematical and Statistical Sciences
 - University of Colorado Denver
-- Instructor: Farhad Pourkamali
+- Instructor: Farhad Pourkamali, Ph.D.
 
 
 This course focuses on learning from data and making predictions with minimal human intervention. You will explore fundamental concepts and techniques in machine learning and apply them to real-world problems through hands-on exercises. Using real-world datasets, you will build and evaluate models with tools such as Python, scikit-learn, NumPy, and Pandas. 

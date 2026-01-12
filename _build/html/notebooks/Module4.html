@@ -200,12 +200,35 @@
 
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Parametric Classification Models</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module5.html">Unsupervised Learning</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module6-part1.html">Support Vector Machines</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module6-part2.html">Decision Trees and Random Forests</a></li>
+
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module6-part3.html">Gradient Boosting</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module7-part1.html">Mathematical Building Blocks of Neural Networks</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="Module7-part2.html">Building Neural Networks in Keras</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Module7-part3.html">Convolutional Neural Networks using Keras</a></li>
 </ul>
 
     </div>
@@ -418,27 +441,38 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Parametric Classification Models</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-methods">Machine Learning Methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-4-parametric-classification-models">Module 4: Parametric Classification Models</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-farhad-pourkamali">Instructor: Farhad Pourkamali</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic regression</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-sigmoid-function">Properties of sigmoid function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification">Binary classification</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-model-for-binary-logistic-regression">Linear model for binary logistic regression</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-decision-rule-for-predicting-y-1">Optimal Decision Rule for Predicting <span class="math notranslate nohighlight">\(y=1\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function">Loss function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Loss function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-in-scikit-learn-sklearn">2. Logistic regression in Scikit-learn (sklearn)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">3. Evaluation metrics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-and-recall">Precision and recall</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiclass-classification">4. Multiclass classification</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multinomial-logistic-regression">Multinomial Logistic Regression</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#micro-and-macro-averaging">Micro and Macro Averaging</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#foundations-of-logistic-regression">1. Foundations of Logistic Regression</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-sigmoid-function">Properties of sigmoid function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification">Binary classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-model-for-binary-logistic-regression">Linear model for binary logistic regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-decision-rule-for-predicting-y-1">Optimal Decision Rule for Predicting <span class="math notranslate nohighlight">\(y=1\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function">Loss function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Loss function</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-in-scikit-learn-sklearn">2. Logistic regression in Scikit-learn (sklearn)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">3. Evaluation metrics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-and-recall">Precision and recall</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#multiclass-classification">4. Multiclass classification</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multinomial-logistic-regression">Multinomial Logistic Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#micro-and-macro-averaging">Micro and Macro Averaging</a></li>
+</ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -474,8 +508,12 @@ document.write(`
 <li><p>Multiclass classification: <a class="reference external" href="https://youtu.be/UoN7O4cJat0">https://youtu.be/UoN7O4cJat0</a></p></li>
 </ol>
 </section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="foundations-of-logistic-regression">
+<h1>1. Foundations of Logistic Regression<a class="headerlink" href="#foundations-of-logistic-regression" title="Link to this heading">#</a></h1>
 <section id="logistic-regression">
-<h3>Logistic regression<a class="headerlink" href="#logistic-regression" title="Link to this heading">#</a></h3>
+<h2>Logistic regression<a class="headerlink" href="#logistic-regression" title="Link to this heading">#</a></h2>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>Logistic regression involves a probabilistic model of the form <span class="math notranslate nohighlight">\(p(y|\mathbf{x};\boldsymbol{\theta})\)</span>, where <span class="math notranslate nohighlight">\(\mathbf{x}\in\mathbb{R}^D\)</span> is a fixed-dimensional input vector</p>
@@ -524,7 +562,7 @@ p(y|\mathbf{x};\boldsymbol{\theta})=Ber(y|\color{red}{\sigma(f(\mathbf{x};\bolds
 </div>
 </section>
 <section id="properties-of-sigmoid-function">
-<h3>Properties of sigmoid function<a class="headerlink" href="#properties-of-sigmoid-function" title="Link to this heading">#</a></h3>
+<h2>Properties of sigmoid function<a class="headerlink" href="#properties-of-sigmoid-function" title="Link to this heading">#</a></h2>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>The derivative of <span class="math notranslate nohighlight">\(\sigma(a)\)</span> has a nice form</p></li>
@@ -558,7 +596,7 @@ p(y|\mathbf{x};\boldsymbol{\theta})=Ber(y|\color{red}{\sigma(f(\mathbf{x};\bolds
 </div>
 </section>
 <section id="binary-classification">
-<h3>Binary classification<a class="headerlink" href="#binary-classification" title="Link to this heading">#</a></h3>
+<h2>Binary classification<a class="headerlink" href="#binary-classification" title="Link to this heading">#</a></h2>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>Plugging the definition of the sigmoid function</p></li>
@@ -620,7 +658,7 @@ p(y|\mathbf{x};\boldsymbol{\theta})=Ber(y|\color{red}{\sigma(f(\mathbf{x};\bolds
 </div>
 </section>
 <section id="linear-model-for-binary-logistic-regression">
-<h3>Linear model for binary logistic regression<a class="headerlink" href="#linear-model-for-binary-logistic-regression" title="Link to this heading">#</a></h3>
+<h2>Linear model for binary logistic regression<a class="headerlink" href="#linear-model-for-binary-logistic-regression" title="Link to this heading">#</a></h2>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>Use a linear function of the form <span class="math notranslate nohighlight">\(f(\mathbf{x};\boldsymbol{\theta})=\boldsymbol{\theta}^T\mathbf{x}\)</span>, yielding the following pmf</p></li>
@@ -634,7 +672,7 @@ p(y|\mathbf{x};\boldsymbol{\theta})=Ber(y|\color{red}{\sigma(f(\mathbf{x};\bolds
 \[p(y=1|\mathbf{x};\boldsymbol{\theta})=\sigma(\boldsymbol{\theta}^T\mathbf{x})=\frac{1}{1+\exp(-\boldsymbol{\theta}^T\mathbf{x})}\]</div>
 </section>
 <section id="optimal-decision-rule-for-predicting-y-1">
-<h3>Optimal Decision Rule for Predicting <span class="math notranslate nohighlight">\(y=1\)</span><a class="headerlink" href="#optimal-decision-rule-for-predicting-y-1" title="Link to this heading">#</a></h3>
+<h2>Optimal Decision Rule for Predicting <span class="math notranslate nohighlight">\(y=1\)</span><a class="headerlink" href="#optimal-decision-rule-for-predicting-y-1" title="Link to this heading">#</a></h2>
 <hr style="border:2px solid gray">
 <ul>
 <li><p><strong>Starting point - Probability comparison</strong>:<br />
@@ -672,7 +710,7 @@ This shows that the <strong>decision boundary</strong> is defined by the hyperpl
 </ul>
 </section>
 <section id="loss-function">
-<h3>Loss function<a class="headerlink" href="#loss-function" title="Link to this heading">#</a></h3>
+<h2>Loss function<a class="headerlink" href="#loss-function" title="Link to this heading">#</a></h2>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>Logistic regression model estimates probabilities and makes predictions. But how is it trained?</p></li>
@@ -727,7 +765,7 @@ This shows that the <strong>decision boundary</strong> is defined by the hyperpl
 </div>
 </section>
 <section id="id1">
-<h3>Loss function<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h2>Loss function<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>The loss function over the whole training set is the average loss over all training samples</p></li>
@@ -745,8 +783,9 @@ This shows that the <strong>decision boundary</strong> is defined by the hyperpl
 <div class="math notranslate nohighlight">
 \[\frac{\partial}{\partial \theta_j}\mathcal{l}(\boldsymbol{\theta})=\frac{1}{N}\sum_{n=1}^N x_{n,j}\Big(\sigma\big(\mathbf{x}_n^T\boldsymbol{\theta}\big)-y_n\Big)\]</div>
 </section>
-<section id="logistic-regression-in-scikit-learn-sklearn">
-<h3>2. Logistic regression in Scikit-learn (sklearn)<a class="headerlink" href="#logistic-regression-in-scikit-learn-sklearn" title="Link to this heading">#</a></h3>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="logistic-regression-in-scikit-learn-sklearn">
+<h1>2. Logistic regression in Scikit-learn (sklearn)<a class="headerlink" href="#logistic-regression-in-scikit-learn-sklearn" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_iris</span>
@@ -1905,8 +1944,8 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 </div>
 </div>
 </section>
-<section id="evaluation-metrics">
-<h3>3. Evaluation metrics<a class="headerlink" href="#evaluation-metrics" title="Link to this heading">#</a></h3>
+<section class="tex2jax_ignore mathjax_ignore" id="evaluation-metrics">
+<h1>3. Evaluation metrics<a class="headerlink" href="#evaluation-metrics" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>MNIST is one of the most popular benchmark data sets in machine learning, which can be accessed via scikit-learn</p>
 <ul>
@@ -2102,9 +2141,8 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <img alt="../_images/d2683f2387cbd1d9ab5c28313444e723ab49517d8c5cb3bdf009141e3377b8d2.png" src="../_images/d2683f2387cbd1d9ab5c28313444e723ab49517d8c5cb3bdf009141e3377b8d2.png" />
 </div>
 </div>
-</section>
 <section id="confusion-matrix">
-<h3>Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Link to this heading">#</a></h3>
+<h2>Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Link to this heading">#</a></h2>
 <hr style="border:2px solid gray">
 <ul>
 <li><p>Each row in a confusion matrix represents an actual class, while each column represents a predicted class</p>
@@ -2134,7 +2172,7 @@ Recall: 0.65
 </div>
 </section>
 <section id="precision-and-recall">
-<h3>Precision and recall<a class="headerlink" href="#precision-and-recall" title="Link to this heading">#</a></h3>
+<h2>Precision and recall<a class="headerlink" href="#precision-and-recall" title="Link to this heading">#</a></h2>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p>We can combine precision and recall into a single metric called the <span class="math notranslate nohighlight">\(F_1\)</span> score using the harmonic mean</p>
@@ -2203,11 +2241,11 @@ AP = \sum_{i=1}^{n} (R_i - R_{i-1}) P_i
 <li><p>The summation approximates the integral of precision over recall</p></li>
 </ul>
 </section>
-<section id="multiclass-classification">
-<h3>4. Multiclass classification<a class="headerlink" href="#multiclass-classification" title="Link to this heading">#</a></h3>
 </section>
+<section class="tex2jax_ignore mathjax_ignore" id="multiclass-classification">
+<h1>4. Multiclass classification<a class="headerlink" href="#multiclass-classification" title="Link to this heading">#</a></h1>
 <section id="multinomial-logistic-regression">
-<h3>Multinomial Logistic Regression<a class="headerlink" href="#multinomial-logistic-regression" title="Link to this heading">#</a></h3>
+<h2>Multinomial Logistic Regression<a class="headerlink" href="#multinomial-logistic-regression" title="Link to this heading">#</a></h2>
 <hr style="border:2px solid gray">
 <ul>
 <li><p><strong>Generalizing binary classification to multiple classes</strong>:<br />
@@ -2247,7 +2285,7 @@ To train the model, we use the <strong>cross-entropy loss</strong>, which measur
 </ul>
 </section>
 <section id="micro-and-macro-averaging">
-<h3>Micro and Macro Averaging<a class="headerlink" href="#micro-and-macro-averaging" title="Link to this heading">#</a></h3>
+<h2>Micro and Macro Averaging<a class="headerlink" href="#micro-and-macro-averaging" title="Link to this heading">#</a></h2>
 <hr style="border:2px solid gray">
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Precision</span></code> and <code class="docutils literal notranslate"><span class="pre">Recall</span></code> are two commonly used metrics to assess the performance of a classification model</p>
@@ -2446,7 +2484,6 @@ weighted avg       0.73      0.82      0.76        60
 </div>
 </section>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2512,27 +2549,38 @@ weighted avg       0.73      0.82      0.76        60
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Parametric Classification Models</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-methods">Machine Learning Methods</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-4-parametric-classification-models">Module 4: Parametric Classification Models</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-farhad-pourkamali">Instructor: Farhad Pourkamali</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic regression</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-sigmoid-function">Properties of sigmoid function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification">Binary classification</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-model-for-binary-logistic-regression">Linear model for binary logistic regression</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-decision-rule-for-predicting-y-1">Optimal Decision Rule for Predicting <span class="math notranslate nohighlight">\(y=1\)</span></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function">Loss function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Loss function</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-in-scikit-learn-sklearn">2. Logistic regression in Scikit-learn (sklearn)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">3. Evaluation metrics</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion matrix</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-and-recall">Precision and recall</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiclass-classification">4. Multiclass classification</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multinomial-logistic-regression">Multinomial Logistic Regression</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#micro-and-macro-averaging">Micro and Macro Averaging</a></li>
 </ul>
 </li>
 </ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#foundations-of-logistic-regression">1. Foundations of Logistic Regression</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression">Logistic regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-sigmoid-function">Properties of sigmoid function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-classification">Binary classification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-model-for-binary-logistic-regression">Linear model for binary logistic regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optimal-decision-rule-for-predicting-y-1">Optimal Decision Rule for Predicting <span class="math notranslate nohighlight">\(y=1\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function">Loss function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Loss function</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#logistic-regression-in-scikit-learn-sklearn">2. Logistic regression in Scikit-learn (sklearn)</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">3. Evaluation metrics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#confusion-matrix">Confusion matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-and-recall">Precision and recall</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#multiclass-classification">4. Multiclass classification</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multinomial-logistic-regression">Multinomial Logistic Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#micro-and-macro-averaging">Micro and Macro Averaging</a></li>
+</ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
@@ -2546,7 +2594,7 @@ weighted avg       0.73      0.82      0.76        60
   <div class="footer-item">
     
 <p class="component-author">
-By Farhad Pourkamali, Ph.D.
+By Farhad Pourkamali
 </p>
 
   </div>
