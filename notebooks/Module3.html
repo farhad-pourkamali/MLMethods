@@ -1,0 +1,1927 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Parametric Regression Models &#8212; MATH 4/5388: Machine Learning Methods</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/Module3';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Parametric Classification Models" href="Module4.html" />
+    <link rel="prev" title="Data Preparation and Validation Techniques" href="Module2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="MATH 4/5388: Machine Learning Methods - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="MATH 4/5388: Machine Learning Methods - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to MATH 4/5388 – Machine Learning Methods
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Module1.html">The Machine Learning Landscape</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Module2.html">Data Preparation and Validation Techniques</a></li>
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Parametric Regression Models</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Module4.html">Parametric Classification Models</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Module5.html">Unsupervised Learning</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Module6-part1.html">Support Vector Machines</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Module6-part2.html">Decision Trees and Random Forests</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Module6-part3.html">Gradient Boosting</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="Module7-part1.html">Mathematical Building Blocks of Neural Networks</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Module7-part2.html">Building Neural Networks in Keras</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="Module7-part3.html">Convolutional Neural Networks using Keras</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/farhad-pourkamali/MLMethods" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/farhad-pourkamali/MLMethods/edit/main/./notebooks/Module3.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/farhad-pourkamali/MLMethods/issues/new?title=Issue%20on%20page%20%2Fnotebooks/Module3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/notebooks/Module3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Parametric Regression Models</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Parametric Regression Models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-methods">Machine Learning Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-3-parametric-regression-models">Module 3: Parametric Regression Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-farhad-pourkamali">Instructor: Farhad Pourkamali</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-problem-formulation-assumption-loss-function-gradient">1. Linear regression: Problem formulation, assumption, loss function, gradient</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-univariate-linear-regression">Case study: univariate linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-optimization-problem">Solving the optimization problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient">Gradient</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compact-form-of-gradient">Compact form of gradient</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Compact form of gradient</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-models-for-regression">Linear models for regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-for-linear-regression">Loss function for linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-normal-equation">The Normal equation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-in-scikit-learn">2. Linear regression in Scikit-learn</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">3. Evaluation metrics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r2-score-or-the-coefficient-of-determination">R² score or the coefficient of determination</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explained-variance-score">Explained variance score</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent-gd-and-variants">4. Gradient descent (GD) and variants</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-gd-for-linear-regression">Batch GD for linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-gradient-descent-sgd-for-linear-regression">Stochastic gradient descent (SGD) for linear regression</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#nonlinear-extension-and-regularization">5. Nonlinear extension and regularization</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bias-variance-tradeoff">The bias-variance tradeoff</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regularization">Regularization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-reading">Recommended Reading</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="parametric-regression-models">
+<h1>Parametric Regression Models<a class="headerlink" href="#parametric-regression-models" title="Link to this heading">#</a></h1>
+<section id="machine-learning-methods">
+<h2>Machine Learning Methods<a class="headerlink" href="#machine-learning-methods" title="Link to this heading">#</a></h2>
+<section id="module-3-parametric-regression-models">
+<h3>Module 3: Parametric Regression Models<a class="headerlink" href="#module-3-parametric-regression-models" title="Link to this heading">#</a></h3>
+</section>
+<section id="instructor-farhad-pourkamali">
+<h3>Instructor: Farhad Pourkamali<a class="headerlink" href="#instructor-farhad-pourkamali" title="Link to this heading">#</a></h3>
+</section>
+<section id="overview">
+<h3>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h3>
+<hr style="border:2px solid gray">
+<ol class="arabic simple">
+<li><p>Linear regression: Problem formulation, assumption, loss function, gradient (<a class="reference external" href="https://youtu.be/7bzSIX2I2Uk">https://youtu.be/7bzSIX2I2Uk</a>)</p></li>
+<li><p>Linear regression in Scikit-learn (<a class="reference external" href="https://youtu.be/faW0Zo9CTQ8">https://youtu.be/faW0Zo9CTQ8</a>)</p></li>
+<li><p>Evaluation metrics (<a class="reference external" href="https://youtu.be/faW0Zo9CTQ8">https://youtu.be/faW0Zo9CTQ8</a>)</p></li>
+<li><p>Gradient descent (GD) and variants (<a class="reference external" href="https://youtu.be/0EV6UoKM4AM">https://youtu.be/0EV6UoKM4AM</a>)</p></li>
+<li><p>Nonlinear extension and regularization (<a class="reference external" href="https://youtu.be/OIoe4OQo1ko">https://youtu.be/OIoe4OQo1ko</a>)</p></li>
+</ol>
+<img src="https://github.com/farhad-pourkamali/MATH4388Online/blob/main/images/ml_general.png?raw=true" width=600>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="linear-regression-problem-formulation-assumption-loss-function-gradient">
+<h1>1. Linear regression: Problem formulation, assumption, loss function, gradient<a class="headerlink" href="#linear-regression-problem-formulation-assumption-loss-function-gradient" title="Link to this heading">#</a></h1>
+<section id="case-study-univariate-linear-regression">
+<h2>Case study: univariate linear regression<a class="headerlink" href="#case-study-univariate-linear-regression" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Training data: <span class="math notranslate nohighlight">\(\mathcal{D}=\{(x_n,y_n)\}_{n=1}^N\)</span></p></li>
+<li><p>Parametric model: <span class="math notranslate nohighlight">\(f(x)=\theta_0+\theta_1 x\)</span></p></li>
+<li><p>Objective: Choose <span class="math notranslate nohighlight">\(\theta_0,\theta_1\)</span> such that <span class="math notranslate nohighlight">\(f(x_n)\)</span> is close to <span class="math notranslate nohighlight">\(y_n\)</span></p></li>
+<li><p>Mean squared error (MSE):</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}(\theta_0, \theta_1)=\frac{1}{N}\sum_{n=1}^N \big(y_n - f(x_n)\big)^2
+\]</div>
+</section>
+<section id="solving-the-optimization-problem">
+<h2>Solving the optimization problem<a class="headerlink" href="#solving-the-optimization-problem" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>We’ll need the concept of partial derivatives</p></li>
+<li><p>To compute <span class="math notranslate nohighlight">\(\partial \mathcal{L}/\partial \theta_0\)</span>, take the  derivative with respect to <span class="math notranslate nohighlight">\(\theta_0\)</span>, treating the rest of the arguments as constants</p></li>
+<li><p>We can show that</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\frac{\partial \mathcal{L}}{\partial \theta_0}=\frac{-2}{N}\sum_{n=1}^N\big(y_n-\theta_0-\theta_1x_n\big)=\frac{2}{N}\sum_{n=1}^N\big(f(x_n)- y_n\big)\]</div>
+<div class="math notranslate nohighlight">
+\[\frac{\partial \mathcal{L}}{\partial \theta_1}=\frac{-2}{N}\sum_{n=1}^N\big(y_n-\theta_0-\theta_1x_n\big)x_n=\frac{2}{N}\sum_{n=1}^N\big(f(x_n)- y_n\big)x_n\]</div>
+</section>
+<section id="gradient">
+<h2>Gradient<a class="headerlink" href="#gradient" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul>
+<li><p>Extend the notion of derivatives to handle vector-argument functions</p>
+<ul class="simple">
+<li><p>Given <span class="math notranslate nohighlight">\(\mathcal{L}:\mathbb{R}^d\mapsto \mathbb{R}\)</span>, where <span class="math notranslate nohighlight">\(d\)</span> is the number of input variables</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\nabla \mathcal{L}=\begin{bmatrix}\frac{\partial \mathcal{L}}{\partial \theta_0}\\ \vdots\\ \frac{\partial \mathcal{L}}{\partial \theta_{d-1}} \end{bmatrix}\in\mathbb{R}^d\end{split}\]</div>
+</li>
+<li><p>Example from the previous slide (<span class="math notranslate nohighlight">\(d=2\)</span>):</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\nabla \mathcal{L}=\frac{2}{N}\begin{bmatrix}\sum_{n=1}^N\big(f(x_n) - y_n\big)\\ \sum_{n=1}^N\big(f(x_n) - y_n\big)x_n \end{bmatrix}\in\mathbb{R}^2\end{split}\]</div>
+</section>
+<section id="compact-form-of-gradient">
+<h2>Compact form of gradient<a class="headerlink" href="#compact-form-of-gradient" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Let us define</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{X}=\begin{bmatrix} 1 &amp; x_1\\ \vdots &amp; \vdots \\ 1 &amp; x_N \end{bmatrix}\in\mathbb{R}^{N\times 2}, \boldsymbol{\theta}=\begin{bmatrix}\theta_0 \\ \theta_1\end{bmatrix}\in\mathbb{R}^{2}, \mathbf{y}=\begin{bmatrix}y_1 \\ \vdots \\ y_N\end{bmatrix}\in\mathbb{R}^{N}\end{split}\]</div>
+<ul class="simple">
+<li><p>Hence, we get</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{X}\boldsymbol{\theta} - \mathbf{y}=\begin{bmatrix}f(x_1) - y_1 \\ \vdots \\ f(x_N) - y_N\end{bmatrix}\end{split}\]</div>
+</section>
+<section id="id1">
+<h2>Compact form of gradient<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>The last step is to show that <span class="math notranslate nohighlight">\(\nabla \mathcal{L}\)</span> can be written as</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{2}{N}\mathbf{X}^T\big(\mathbf{X}\boldsymbol{\theta} - \mathbf{y}\big)=\frac{2}{N}\begin{bmatrix} 1 &amp; \ldots &amp; 1\\x_1 &amp; \ldots &amp; x_N\end{bmatrix}\begin{bmatrix}f(x_1) - y_1 \\ \vdots \\ f(x_N) - y_N\end{bmatrix}=\frac{2}{N}\begin{bmatrix}\sum_{n=1}^N\big(f(x_n) - y_n\big)\\ \sum_{n=1}^N\big(f(x_n) - y_n\big)x_n \end{bmatrix}\end{split}\]</div>
+<ul class="simple">
+<li><p>Given this compact form, we can use NumPy to solve the linear matrix equation</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\underbrace{\mathbf{X}^T\mathbf{X}}_{a}\boldsymbol{\theta}=\underbrace{\mathbf{X}^T\mathbf{y}}_{b}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># GDP data </span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span> 
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://github.com/ageron/data/raw/main/lifesat/lifesat.csv&quot;</span><span class="p">)</span>
+                 
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Country</th>
+      <th>GDP per capita (USD)</th>
+      <th>Life satisfaction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Russia</td>
+      <td>26456.387938</td>
+      <td>5.8</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Greece</td>
+      <td>27287.083401</td>
+      <td>5.4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Turkey</td>
+      <td>28384.987785</td>
+      <td>5.5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Latvia</td>
+      <td>29932.493910</td>
+      <td>5.9</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Hungary</td>
+      <td>31007.768407</td>
+      <td>5.6</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 27 entries, 0 to 26
+Data columns (total 3 columns):
+ #   Column                Non-Null Count  Dtype  
+---  ------                --------------  -----  
+ 0   Country               27 non-null     object 
+ 1   GDP per capita (USD)  27 non-null     float64
+ 2   Life satisfaction     27 non-null     float64
+dtypes: float64(2), object(1)
+memory usage: 780.0+ bytes
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Input features and labels (or outcomes) for the regression problem </span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;GDP per capita (USD)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Life satisfaction&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(27,) (27,)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([26456.38793813, 27287.08340093, 28384.98778463, 29932.49391006,
+       31007.76840654, 32181.15453723, 32238.15725928, 35638.42135118,
+       36215.44759073, 36547.73895598, 36732.03474403, 38341.30757041,
+       38992.14838075, 41627.12926943, 42025.61737306, 42404.39373816,
+       45856.62562648, 47260.80045844, 48210.03311134, 48697.83702825,
+       50683.32350972, 50922.35802345, 51935.60386182, 52279.72885136,
+       54209.56383573, 55938.2128086 , 60235.7284917 ])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[26456.38793813],
+       [27287.08340093],
+       [28384.98778463],
+       [29932.49391006],
+       [31007.76840654],
+       [32181.15453723],
+       [32238.15725928],
+       [35638.42135118],
+       [36215.44759073],
+       [36547.73895598],
+       [36732.03474403],
+       [38341.30757041],
+       [38992.14838075],
+       [41627.12926943],
+       [42025.61737306],
+       [42404.39373816],
+       [45856.62562648],
+       [47260.80045844],
+       [48210.03311134],
+       [48697.83702825],
+       [50683.32350972],
+       [50922.35802345],
+       [51935.60386182],
+       [52279.72885136],
+       [54209.56383573],
+       [55938.2128086 ],
+       [60235.7284917 ]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.],
+       [1.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># add the column of all 1&#39;s </span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">add_column</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    add the column of all 1&#39;s </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">)),</span> <span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">Xcon</span> <span class="o">=</span> <span class="n">add_column</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">Xcon</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(27, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Xcon</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[1.00000000e+00, 2.64563879e+04],
+       [1.00000000e+00, 2.72870834e+04],
+       [1.00000000e+00, 2.83849878e+04],
+       [1.00000000e+00, 2.99324939e+04],
+       [1.00000000e+00, 3.10077684e+04],
+       [1.00000000e+00, 3.21811545e+04],
+       [1.00000000e+00, 3.22381573e+04],
+       [1.00000000e+00, 3.56384214e+04],
+       [1.00000000e+00, 3.62154476e+04],
+       [1.00000000e+00, 3.65477390e+04],
+       [1.00000000e+00, 3.67320347e+04],
+       [1.00000000e+00, 3.83413076e+04],
+       [1.00000000e+00, 3.89921484e+04],
+       [1.00000000e+00, 4.16271293e+04],
+       [1.00000000e+00, 4.20256174e+04],
+       [1.00000000e+00, 4.24043937e+04],
+       [1.00000000e+00, 4.58566256e+04],
+       [1.00000000e+00, 4.72608005e+04],
+       [1.00000000e+00, 4.82100331e+04],
+       [1.00000000e+00, 4.86978370e+04],
+       [1.00000000e+00, 5.06833235e+04],
+       [1.00000000e+00, 5.09223580e+04],
+       [1.00000000e+00, 5.19356039e+04],
+       [1.00000000e+00, 5.22797289e+04],
+       [1.00000000e+00, 5.42095638e+04],
+       [1.00000000e+00, 5.59382128e+04],
+       [1.00000000e+00, 6.02357285e+04]])
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">np.concatenate</span></code> Explanation</p>
+<ul>
+<li><p>Purpose:</p>
+<ul>
+<li><p>Combines (concatenates) multiple arrays into a single array along a specified axis.</p></li>
+</ul>
+</li>
+<li><p>Input:</p>
+<ul>
+<li><p>A tuple or list of arrays to concatenate, all with the same shape except in the concatenation axis.</p></li>
+</ul>
+</li>
+<li><p>Axis:</p>
+<ul>
+<li><p>Defines the dimension along which the arrays will be joined.</p></li>
+<li><p>Default: axis=0 (rows are stacked for 2D arrays).</p></li>
+<li><p>For axis=1, arrays are concatenated column-wise.</p></li>
+</ul>
+</li>
+<li><p>Shape Requirement:</p>
+<ul>
+<li><p>All arrays must have the same shape in dimensions other than the specified axis.</p></li>
+</ul>
+</li>
+<li><p>Output:</p>
+<ul>
+<li><p>A new array that is the concatenation of the input arrays along the specified axis.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># solve the problem </span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">Xcon</span><span class="p">),</span> <span class="n">Xcon</span><span class="p">)</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">Xcon</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">lstsq</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">rcond</span><span class="o">=</span><span class="kc">None</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="c1"># Cut-off ratio for small singular values</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3.74904943e+00 6.77889970e-05]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot the prediction model f</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">theta</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;figure.figsize&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">)})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;training data&#39;</span><span class="p">)</span>
+
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25000</span><span class="p">,</span> <span class="mi">60000</span><span class="p">])</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">add_column</span><span class="p">(</span><span class="n">X_test</span><span class="p">),</span> <span class="n">theta</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;prediction&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;GDP&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;life satisfaction&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/405f51de90a49018afa4bea9b8a664b9616fefe254123568d9960580141c01cf.png" src="../_images/405f51de90a49018afa4bea9b8a664b9616fefe254123568d9960580141c01cf.png" />
+</div>
+</div>
+</section>
+<section id="linear-models-for-regression">
+<h2>Linear models for regression<a class="headerlink" href="#linear-models-for-regression" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Given the training data set <span class="math notranslate nohighlight">\(\mathcal{D}=\{(\mathbf{x}_n,y_n)\}_{n=1}^N\)</span> and an input vector <span class="math notranslate nohighlight">\(\mathbf{x}\in\mathbb{R}^D\)</span>, the linear regression model takes the form</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[f(\mathbf{x})=\theta_0+\theta_1x_1+\theta_2x_2+\ldots+\theta_Dx_D=\theta_0+\boldsymbol{\theta}^T\mathbf{x}\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\boldsymbol{\theta}\in\mathbb{R}^D\)</span>: weights or regression coefficients, <span class="math notranslate nohighlight">\(\theta_0\)</span>: intercept or bias term</p></li>
+<li><p>Compact representation by defining <span class="math notranslate nohighlight">\(\mathbf{x}=[\color{red}{x_0=1},x_1,\ldots,x_D]\)</span> and <span class="math notranslate nohighlight">\(\boldsymbol{\theta}=[\theta_0,\theta_1,\ldots,\theta_D]\)</span> in <span class="math notranslate nohighlight">\(\mathbb{R}^{D+1}\)</span></p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[f(\mathbf{x})=\boldsymbol{\theta}^T\mathbf{x}=\langle \boldsymbol{\theta}, \mathbf{x}\rangle\]</div>
+</section>
+<section id="loss-function-for-linear-regression">
+<h2>Loss function for linear regression<a class="headerlink" href="#loss-function-for-linear-regression" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>MSE loss function for a linear regression model</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}(\boldsymbol{\theta})=\frac{1}{N}\sum_{n=1}^N\big(y_n-\langle \boldsymbol{\theta},\mathbf{x}_n\rangle\big)^2=\frac{1}{N}\|\mathbf{y}-\mathbf{X}\boldsymbol{\theta}\|_2^2\]</div>
+<p>where we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{X}=\begin{bmatrix}\rule[.5ex]{1em}{0.4pt}\mathbf{x}_1^T \rule[.5ex]{1em}{0.4pt}\\ \vdots\\\rule[.5ex]{1em}{0.4pt}\mathbf{x}_N^T \rule[.5ex]{1em}{0.4pt}\end{bmatrix}\in\mathbb{R}^{N\times (D+1)}, \boldsymbol{\theta}=\begin{bmatrix}
+\theta_0\\\theta_1\\ \vdots \\\theta_{D}\end{bmatrix}\in\mathbb{R}^{D+1},\;\mathbf{y}=\begin{bmatrix}y_1\\y_2\\ \vdots\\y_N\end{bmatrix}\in\mathbb{R}^N, \end{split}\]</div>
+<ul class="simple">
+<li><p>Optimization problem for model fitting/training: <span class="math notranslate nohighlight">\(\underset{\boldsymbol{\theta}\in\mathbb{R}^{D+1}}{\operatorname{argmin}} \mathcal{L}(\boldsymbol{\theta})\)</span></p></li>
+</ul>
+</section>
+<section id="the-normal-equation">
+<h2>The Normal equation<a class="headerlink" href="#the-normal-equation" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>To find the value of <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> that minimizes the MSE, there exists a <em>closed-form</em> solution</p>
+<ul>
+<li><p>a mathematical equation that gives the result directly</p></li>
+</ul>
+</li>
+<li><p>The gradient takes the form</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\nabla \mathcal{L}(\boldsymbol{\theta})= \frac{2}{N}\mathbf{X}^T\big(\mathbf{X}\boldsymbol{\theta} - \mathbf{y}\big)\]</div>
+<ul class="simple">
+<li><p>Normal equation</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\theta}^*=\big(\mathbf{X}^T\mathbf{X}\big)^{-1}\mathbf{X}^T\mathbf{y}\]</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="linear-regression-in-scikit-learn">
+<h1>2. Linear regression in Scikit-learn<a class="headerlink" href="#linear-regression-in-scikit-learn" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Import the <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> class from <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model</span></code>.</p></li>
+<li><p>Create an instance of the model.</p></li>
+</ul>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">.fit()</span></code> method to train the model on your data.</p>
+<ul>
+<li><p>Pass the feature matrix (X) and target vector (y) to the method.</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">.predict()</span></code> method to predict target values for new data points.</p></li>
+</ul>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="n">predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">new_X</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Attributes</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.coef_</span></code>: The coefficients (weights) for the linear equation.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.intercept_</span></code>: The intercept term (bias) of the linear model.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># Revisit the GDP data by preprocessing input features </span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
+<span class="n">minmax</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+
+<span class="n">X_minmax</span> <span class="o">=</span> <span class="n">minmax</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+
+<span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_minmax</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="c1"># X should be a 2D array </span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">intercept_</span><span class="p">,</span> <span class="n">reg</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.542501428448674 [2.28986761]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the prediction model </span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="s2">&quot;figure.figsize&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">3</span><span class="p">)})</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_minmax</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;training data&#39;</span><span class="p">)</span>
+
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25000</span><span class="p">,</span> <span class="mi">60000</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X_test_minmax</span> <span class="o">=</span> <span class="n">minmax</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_test_minmax</span><span class="p">,</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_minmax</span><span class="p">),</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;prediction&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;GDP (scaled)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;life satisfaction&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/b1fa2c4150b30900b9dbef202c52bcabf57705f0a3e65cc21c6b35c089a12a50.png" src="../_images/b1fa2c4150b30900b9dbef202c52bcabf57705f0a3e65cc21c6b35c089a12a50.png" />
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="evaluation-metrics">
+<h1>3. Evaluation metrics<a class="headerlink" href="#evaluation-metrics" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>The quality of a regression model can be assessed using various quantities</p>
+<ul>
+<li><p>See <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html">https://scikit-learn.org/stable/modules/model_evaluation.html</a></p></li>
+</ul>
+</li>
+<li><p>Mean squared error</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\text{MSE}(\mathbf{y}, \hat{\mathbf{y}})=\frac{1}{N_{\text{test}}}\sum_{n=1}^{N_{\text{test}}} \big(y_n - \hat{y}_n\big)^2\]</div>
+<ul class="simple">
+<li><p>The value you get after calculating MSE is a squared unit of output</p></li>
+<li><p>If you have outliers in the data set, then it penalizes the outliers most</p></li>
+<li><p>Possible solution: the output value you get is in the same unit as the required output variable</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\text{RMSE}(\mathbf{y}, \hat{\mathbf{y}})=\sqrt{\frac{1}{N_{\text{test}}}\sum_{n=1}^{N_{\text{test}}} \big(y_n - \hat{y}_n\big)^2}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">root_mean_squared_error</span>
+
+<span class="n">y_true</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">7</span><span class="p">]</span>
+
+<span class="c1"># If True returns MSE value, if False returns RMSE value.</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;MSE: &#39;</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">),</span> 
+      <span class="s1">&#39;, RMSE: &#39;</span><span class="p">,</span> <span class="n">root_mean_squared_error</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MSE:  0.25 , RMSE:  0.5
+</pre></div>
+</div>
+</div>
+</div>
+<section id="r2-score-or-the-coefficient-of-determination">
+<h2>R² score or the coefficient of determination<a class="headerlink" href="#r2-score-or-the-coefficient-of-determination" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Definition</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[R^2(\mathbf{y}, \hat{\mathbf{y}}) = 1 - \frac{\sum_{n=1}^{N_{\text{test}}} (y_n - \hat{y}_n)^2}{\sum_{n=1}^{N_{\text{test}}} (y_n - \bar{y})^2},\;\;\bar{y} = \frac{1}{N_{\text{test}}} \sum_{n=1}^{N_{\text{test}}} y_n\]</div>
+<ul class="simple">
+<li><p>RSS (Residual Sum of Squares) measures the amount of variability that is left unexplained</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\text{RSS}=\sum_{n=1}^{N_{\text{test}}} (y_n - \hat{y}_n)^2\]</div>
+<ul class="simple">
+<li><p>Best possible score is 1.</p></li>
+<li><p>An <span class="math notranslate nohighlight">\(R^2\)</span> score of 0 in a regression model means that the model’s predictions are no better than simply predicting the mean of the target variable for all data points.</p></li>
+<li><p>A negative <span class="math notranslate nohighlight">\(R^2\)</span> is a signal to revisit the model design or data preparation steps.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">r2_score</span>
+
+<span class="c1"># Data where the model performs poorly</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">]])</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">])</span>  <span class="c1"># Actual target values</span>
+<span class="n">y_bad_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">60</span><span class="p">])</span>  <span class="c1"># Poor predictions</span>
+
+<span class="c1"># Calculate R² manually</span>
+<span class="n">ss_res</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">y_bad_pred</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Residual sum of squares</span>
+<span class="n">ss_tot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">y</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Total sum of squares</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">ss_res</span> <span class="o">/</span> <span class="n">ss_tot</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;R² score:&quot;</span><span class="p">,</span> <span class="n">r2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>R² score: -12.5
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="explained-variance-score">
+<h2>Explained variance score<a class="headerlink" href="#explained-variance-score" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Definition</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\text{EV}(\mathbf{y}, \hat{\mathbf{y}}) = 1 - \frac{Var\{ \mathbf{y} - \hat{\mathbf{y}}\}}{Var\{\mathbf{y}\}}
+\]</div>
+<ul class="simple">
+<li><p>The best possible score is 1.0, lower values are worse.</p></li>
+<li><p>When the residuals (i.e., <span class="math notranslate nohighlight">\(e_n=y_n-\hat{y}_n\)</span>) have zero mean, the explained variance score and the <span class="math notranslate nohighlight">\(R^2\)</span> score are identical.</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="gradient-descent-gd-and-variants">
+<h1>4. Gradient descent (GD) and variants<a class="headerlink" href="#gradient-descent-gd-and-variants" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Optimization problem for model fitting/training: <span class="math notranslate nohighlight">\(\underset{\boldsymbol{\theta}\in\mathbb{R}^{D+1}}{\operatorname{argmin}} \mathcal{L}(\boldsymbol{\theta})\)</span></p></li>
+<li><p>Tweak parameters <span class="math notranslate nohighlight">\(\boldsymbol{\theta}\)</span> iteratively to minimize the loss function
+<span class="math notranslate nohighlight">\(\mathcal{L}(\boldsymbol{\theta})\)</span></p></li>
+<li><p>At each iteration <span class="math notranslate nohighlight">\(t\)</span>, perform an update to decrease the loss function</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t - \eta_t \nabla \mathcal{L}(\boldsymbol{\theta}_t)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\eta_t\)</span> is the step size or learning rate</p>
+<ul class="simple">
+<li><p>If the learning rate is too small, then the algorithm will have to go through many iterations to converge</p></li>
+<li><p>The algorithm may diverge when the learning rate is too high</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>  <span class="c1"># Objective function</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">f_grad</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>  <span class="c1"># Gradient (derivative) of the objective function</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gd</span><span class="p">(</span><span class="n">eta</span><span class="p">,</span> <span class="n">f_grad</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="mf">10.0</span>  <span class="c1"># initial solution </span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">f_grad</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">show_trace</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">f</span><span class="p">):</span>
+    <span class="c1"># Define the range of the plot based on the solutions</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">results</span><span class="p">)),</span> <span class="nb">abs</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">results</span><span class="p">)))</span>
+    <span class="n">f_line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+    
+    <span class="c1"># Plot the function</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f_line</span><span class="p">,</span> <span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">f_line</span><span class="p">],</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Function f(x)&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Plot the solution path</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">results</span><span class="p">],</span> <span class="s1">&#39;bo-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Gradient Descent Path&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Annotate each solution point with the iteration number</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">results</span><span class="p">):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                 <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Add labels and legend for better clarity</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;f(x)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    
+    <span class="c1"># Show the plot</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show_trace</span><span class="p">(</span><span class="n">gd</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">f_grad</span><span class="p">),</span> <span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1e3bb8d5b5052af10abada225015b8c51b301fd292acb4c75bee4d48a7eb3cf6.png" src="../_images/1e3bb8d5b5052af10abada225015b8c51b301fd292acb4c75bee4d48a7eb3cf6.png" />
+</div>
+</div>
+<section id="batch-gd-for-linear-regression">
+<h2>Batch GD for linear regression<a class="headerlink" href="#batch-gd-for-linear-regression" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Recall the gradient vector of the loss function</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\nabla \mathcal{L}(\boldsymbol{\theta})= \frac{2}{N}\mathbf{X}^T\big(\mathbf{X}\boldsymbol{\theta} - \mathbf{y}\big)\]</div>
+<ul class="simple">
+<li><p>GD step with fixed learning rate</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t - \eta \nabla \mathcal{L}(\boldsymbol{\theta}_t)=\boldsymbol{\theta}_t - \eta \frac{2}{N}\mathbf{X}^T\big(\mathbf{X}\boldsymbol{\theta}_t - \mathbf{y}\big) \]</div>
+<ul class="simple">
+<li><p>This formula involves calculations over the full training set <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> –&gt; batch or full GD</p></li>
+<li><p>An epoch means one complete pass of the training data set</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># GDP data </span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span> 
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://github.com/ageron/data/raw/main/lifesat/lifesat.csv&quot;</span><span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;GDP per capita (USD)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Life satisfaction&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">add_column</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    add the column of all 1&#39;s </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="mi">1</span><span class="p">)),</span> <span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+
+<span class="n">minmax</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+
+<span class="n">X_minmax</span> <span class="o">=</span> <span class="n">minmax</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">Xcon</span> <span class="o">=</span> <span class="n">add_column</span><span class="p">(</span><span class="n">X_minmax</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">Xcon</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[1.         0.        ]
+ [1.         0.02459182]
+ [1.         0.05709406]
+ [1.         0.10290627]
+ [1.         0.13473858]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Implementation of Batch GD </span>
+
+<span class="n">eta</span> <span class="o">=</span> <span class="mf">0.01</span>  <span class="c1"># learning rate</span>
+<span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">Xcon</span><span class="p">)</span>  <span class="c1"># number of instances</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># randomly initialized model parameters</span>
+
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
+    <span class="n">gradients</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">N</span> <span class="o">*</span> <span class="n">Xcon</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="p">(</span><span class="n">Xcon</span> <span class="o">@</span> <span class="n">theta</span> <span class="o">-</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">gradients</span>
+    
+<span class="nb">print</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[5.54877943]
+ [2.27673633]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Impact of eta (step size)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># randomly initialized model parameters</span>
+
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">25000</span><span class="p">,</span> <span class="mi">60000</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">X_test_minmax</span> <span class="o">=</span> <span class="n">add_column</span><span class="p">(</span><span class="n">minmax</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X_minmax</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;training data&#39;</span><span class="p">)</span>
+
+<span class="n">eta</span><span class="o">=</span> <span class="mf">.1</span> <span class="c1"># 0.001, 0.01, 0.1</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
+    <span class="n">gradients</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">N</span> <span class="o">*</span> <span class="n">Xcon</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="p">(</span><span class="n">Xcon</span> <span class="o">@</span> <span class="n">theta</span> <span class="o">-</span> <span class="n">y</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">gradients</span>
+    <span class="k">if</span> <span class="n">epoch</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> 
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_test_minmax</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">X_test_minmax</span><span class="nd">@theta</span> <span class="p">,</span> <span class="s1">&#39;b:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;1 epochs&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">epoch</span> <span class="o">==</span> <span class="mi">10</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_test_minmax</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">X_test_minmax</span><span class="nd">@theta</span> <span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;10 epochs&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">epoch</span> <span class="o">==</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_test_minmax</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">X_test_minmax</span><span class="nd">@theta</span> <span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;100 epochs&#39;</span><span class="p">)</span>           
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;GDP (scaled)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;life satisfaction&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/cc1516654a7c2ed2da30b3afe20d2d0668d8209d1d2fa27b944917e0e5bdae49.png" src="../_images/cc1516654a7c2ed2da30b3afe20d2d0668d8209d1d2fa27b944917e0e5bdae49.png" />
+</div>
+</div>
+</section>
+<section id="stochastic-gradient-descent-sgd-for-linear-regression">
+<h2>Stochastic gradient descent (SGD) for linear regression<a class="headerlink" href="#stochastic-gradient-descent-sgd-for-linear-regression" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>The main problem with GD is that it uses the whole training set at every step</p></li>
+<li><p>Consider a minibatch of size <span class="math notranslate nohighlight">\(B=1\)</span> and a selected sample <span class="math notranslate nohighlight">\(\mathbf{x}_n^T\)</span> from <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> (row vector)</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\nabla \mathcal{L}(\boldsymbol{\theta})=\frac{2}{N}\mathbf{X}^T(\mathbf{X}\boldsymbol{\theta}-\mathbf{y}) \Rightarrow 2\mathbf{x}_n(\mathbf{x}_n^T\boldsymbol{\theta}-y_n)\]</div>
+<div class="math notranslate nohighlight">
+\[\boldsymbol{\theta}_{t+1}=\boldsymbol{\theta}_t - 2\mathbf{x}_n(\mathbf{x}_n^T\boldsymbol{\theta}-y_n)\]</div>
+<ul class="simple">
+<li><p>Given that <span class="math notranslate nohighlight">\(N\)</span> is the sample size and <span class="math notranslate nohighlight">\(B\)</span> is the batch size, in one epoch we update our model <span class="math notranslate nohighlight">\(N/B\)</span> times</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n_epochs</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">t0</span><span class="p">,</span> <span class="n">t1</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">50</span>  <span class="c1"># learning schedule hyperparameters</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">learning_schedule</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">t0</span> <span class="o">/</span> <span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">t1</span><span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># random initialization</span>
+
+<span class="c1"># Loop over the number of epochs (complete passes over the data)</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_epochs</span><span class="p">):</span>
+    <span class="c1"># Loop over individual data points</span>
+    <span class="k">for</span> <span class="n">iteration</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span> <span class="c1">#(N/B, B=1)</span>
+        <span class="c1"># Select a random index for the current data point</span>
+        <span class="n">random_index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+        
+        <span class="c1"># Extract xi and yi</span>
+        <span class="n">xi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">Xcon</span><span class="p">[</span><span class="n">random_index</span> <span class="p">:</span> <span class="n">random_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">yi</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">random_index</span> <span class="p">:</span> <span class="n">random_index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
+        
+        <span class="c1"># Compute the gradient of the loss function</span>
+        <span class="n">gradients</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">xi</span> <span class="o">@</span> <span class="p">(</span><span class="n">xi</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">theta</span> <span class="o">-</span> <span class="n">yi</span><span class="p">)</span>  <span class="c1"># for SGD, do not divide by N</span>
+        
+        <span class="c1"># The learning schedule decreases the learning rate over time</span>
+        <span class="n">eta</span> <span class="o">=</span> <span class="n">learning_schedule</span><span class="p">(</span><span class="n">epoch</span> <span class="o">*</span> <span class="n">N</span> <span class="o">+</span> <span class="n">iteration</span><span class="p">)</span>
+        
+        <span class="c1"># Update the parameter vector (theta)</span>
+        <span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span> <span class="o">-</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">gradients</span>
+        
+<span class="nb">print</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[5.56898107]
+ [2.27782555]]
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Sklearn implementation of SGD for linear regression</p>
+<ul>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDRegressor.html">https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.SGDRegressor.html</a></p></li>
+<li><p>Parameters</p>
+<ul>
+<li><p>max_iter: epochs</p></li>
+<li><p>learning_rate: constant or variable</p></li>
+<li><p>n_iter_no_change: number of iterations with no improvement to wait before stopping fitting</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># GDP data </span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">SGDRegressor</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;GDP per capita (USD)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Life satisfaction&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;preprocess&#39;</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">()),</span> 
+                 <span class="p">(</span><span class="s1">&#39;reg&#39;</span><span class="p">,</span> <span class="n">SGDRegressor</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">))])</span>
+
+<span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">pipe</span><span class="p">[</span><span class="s1">&#39;reg&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">intercept_</span><span class="p">,</span> <span class="n">pipe</span><span class="p">[</span><span class="s1">&#39;reg&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">coef_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[5.35324059] [2.47088247]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="nonlinear-extension-and-regularization">
+<h1>5. Nonlinear extension and regularization<a class="headerlink" href="#nonlinear-extension-and-regularization" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>The linear model may not be a good fit for many problems</p>
+<ul>
+<li><p>We can improve the fit by using a polynomial regression model of degree <span class="math notranslate nohighlight">\(d\)</span></p></li>
+</ul>
+</li>
+</ul>
+<div class="math notranslate nohighlight">
+\[f(x)=\boldsymbol{\theta}^T\phi(x)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\phi(x)=[1,x,x^2,\ldots,x^d]\)</span></p>
+<ul class="simple">
+<li><p>This is a simple example of feature preprocessing/engineering</p>
+<ul>
+<li><p>Benefit: linear function of parameters but nonlinear wrt input features</p></li>
+</ul>
+</li>
+<li><p>We can use <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PolynomialFeatures.html">sklearn.preprocessing.PolynomialFeatures</a> to generate polynomial features</p>
+<ul>
+<li><p>Use pipeline in sklearn to assemble several steps (preprocessing + estimator)</p></li>
+</ul>
+</li>
+<li><p>In the following, we generate a synthetic model of the form:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+y = 0.5x^2 + x + 2 + \text{noise}
+\]</div>
+<p>where the noise represents random variations added to simulate real-world data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate simulated data </span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="s2">&quot;figure.figsize&quot;</span><span class="p">:</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">)})</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">X</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">X</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;b.&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$&quot;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/13ce7fd8a84a07c6c74ae69f48ebc7e4d91a9187d126ad63c063d118fb80a609.png" src="../_images/13ce7fd8a84a07c6c74ae69f48ebc7e4d91a9187d126ad63c063d118fb80a609.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># train polynomial model </span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">PolynomialFeatures</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="n">pipe</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;poly&#39;</span><span class="p">,</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)),</span>
+    <span class="p">(</span><span class="s1">&#39;regr&#39;</span><span class="p">,</span> <span class="n">LinearRegression</span><span class="p">())])</span>
+
+<span class="n">pipe</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="c1"># training </span>
+
+<span class="n">X_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y_new</span> <span class="o">=</span> <span class="n">pipe</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span> <span class="c1"># prediction</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;b.&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_new</span><span class="p">,</span> <span class="n">y_new</span><span class="p">,</span> <span class="s2">&quot;r-&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Predictions&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$&quot;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">&quot;upper left&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/21d386f86c626156bb4689fd8f8802595882a471e27b45002f9e693503386069.png" src="../_images/21d386f86c626156bb4689fd8f8802595882a471e27b45002f9e693503386069.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare varying complexity levels</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="k">for</span> <span class="n">style</span><span class="p">,</span> <span class="n">degree</span> <span class="ow">in</span> <span class="p">((</span><span class="s2">&quot;g-&quot;</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;b--&quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;r-+&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)):</span>
+    <span class="n">polybig_features</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="n">degree</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">std_scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+    <span class="n">lin_reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+    <span class="n">polynomial_regression</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s2">&quot;poly_features&quot;</span><span class="p">,</span> <span class="n">polybig_features</span><span class="p">),</span>
+                                      <span class="p">(</span><span class="s2">&quot;std_scaler&quot;</span><span class="p">,</span> <span class="n">std_scaler</span><span class="p">),</span>
+                                      <span class="p">(</span><span class="s2">&quot;lin_reg&quot;</span><span class="p">,</span> <span class="n">lin_reg</span><span class="p">)])</span>
+    <span class="n">polynomial_regression</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">y_newbig</span> <span class="o">=</span> <span class="n">polynomial_regression</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_new</span><span class="p">,</span> <span class="n">y_newbig</span><span class="p">,</span> <span class="n">style</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">degree</span><span class="p">))</span>  
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;b.&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$&quot;</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2f73b14d1d7421033c1ce7080a7d46f0b03f1efe8790974de9a41b4b9a6e2597.png" src="../_images/2f73b14d1d7421033c1ce7080a7d46f0b03f1efe8790974de9a41b4b9a6e2597.png" />
+</div>
+</div>
+<section id="the-bias-variance-tradeoff">
+<h2>The bias-variance tradeoff<a class="headerlink" href="#the-bias-variance-tradeoff" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>A model’s generalization (or test) error can be decomposed into three components:</p>
+<ul>
+<li><p>Bias: Error introduced by approximating a real-world problem, which may be complex, by a simplified model.</p>
+<ul>
+<li><p>High bias models make strong assumptions about the data, potentially leading to underfitting, where the model fails to capture underlying patterns.</p></li>
+</ul>
+</li>
+<li><p>Variance: Error introduced by the model’s sensitivity to small fluctuations in the training set.</p>
+<ul>
+<li><p>High variance models are overly sensitive to training data variations, leading to overfitting, where the model captures noise rather than the intended outputs.</p></li>
+</ul>
+</li>
+<li><p>Irreducible Error: Error inherent in the data itself, due to noise or other unpredictable factors, which cannot be reduced by any model.</p></li>
+</ul>
+</li>
+<li><p>Model flexibility and error relationship</p>
+<ul>
+<li><p>As a model’s flexibility (complexity) increases, its training error typically decreases because it can fit the training data more closely.</p></li>
+<li><p>However, the test error often follows a U-shaped curve:</p>
+<ul>
+<li><p>With low flexibility, both training and test errors are high due to underfitting.</p></li>
+<li><p>With moderate flexibility, test error decreases as the model captures the underlying data patterns.</p></li>
+<li><p>Beyond a certain point, increasing flexibility leads to overfitting, causing test error to rise even as training error continues to decline.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>This balance between bias and variance is known as the bias-variance tradeoff. Achieving optimal model performance involves finding the right level of complexity that minimizes test error by appropriately balancing bias and variance.</p></li>
+</ul>
+<img src="https://github.com/farhad-pourkamali/MATH4388Online/blob/main/images/tradeoff.png?raw=true" height=400 width=600></section>
+<section id="regularization">
+<h2>Regularization<a class="headerlink" href="#regularization" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Regularization adds a penalty term to the model’s loss function to discourage excessive complexity.</p></li>
+<li><p>Common regularization techniques:</p>
+<ul>
+<li><p>L1 Regularization (Lasso): Adds the sum of the absolute values of coefficients as a penalty.</p></li>
+<li><p>L2 Regularization (Ridge): Adds the sum of the squares of coefficients as a penalty.</p></li>
+<li><p>Elastic Net: Combines L1 and L2 penalties.</p></li>
+</ul>
+</li>
+<li><p>By discouraging large weights, it prevents the model from overfitting small variations or noise in the training data.</p></li>
+<li><p>Mathematical representation</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\mathcal{L}(\boldsymbol{\theta})=\|\mathbf{y}-\mathbf{X}\boldsymbol{\theta}\|_2^2+\lambda C(\boldsymbol{\theta})\]</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>* $\lambda\geq 0$ is the regularization parameter (i.e., hyperparameter) and $C(\boldsymbol{\theta})$ is some form of model complexity. 
+* We can quantify complexity using the L2 regularization formula, i.e., the sum of the squares of all weights
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\ell_2 \text{ regularization}: C(\boldsymbol{\theta})=\|\boldsymbol{\theta}\|_2^2=\theta_0^2+\theta_1^2+\theta_2^2+\ldots\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Synthetic/Simulated Data (Ridge Regression or L2)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Ridge</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">PolynomialFeatures</span><span class="p">,</span> <span class="n">StandardScaler</span>
+
+<span class="c1"># Seed for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Generate synthetic data with a cubic relationship</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">X</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">X</span><span class="o">**</span><span class="mi">3</span> <span class="o">-</span> <span class="mf">0.8</span> <span class="o">*</span> <span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">X</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># Cubic function with noise</span>
+<span class="n">X_new</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">3</span><span class="o">+</span><span class="mf">0.05</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Regularization strengths to explore</span>
+<span class="n">alphas</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="o">**-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Iterate through different alpha values and plot the results</span>
+<span class="k">for</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">style</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">alphas</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;b-&quot;</span><span class="p">,</span> <span class="s2">&quot;g--&quot;</span><span class="p">,</span> <span class="s2">&quot;r:&quot;</span><span class="p">)):</span>  <span class="c1"># zip aggregates alphas and styles</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([</span>
+        <span class="p">(</span><span class="s2">&quot;poly_features&quot;</span><span class="p">,</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="n">degree</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)),</span>  <span class="c1"># 10th degree polynomial</span>
+        <span class="p">(</span><span class="s2">&quot;std_scaler&quot;</span><span class="p">,</span> <span class="n">StandardScaler</span><span class="p">()),</span>  <span class="c1"># Standardize features</span>
+        <span class="p">(</span><span class="s2">&quot;regul_reg&quot;</span><span class="p">,</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">alpha</span><span class="p">)),</span>  <span class="c1"># Ridge regression with specified alpha</span>
+    <span class="p">])</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X_new</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_new</span><span class="p">),</span> <span class="n">style</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\alpha = </span><span class="si">{}</span><span class="s2">$&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span>
+
+<span class="c1"># Plot the original data</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s2">&quot;k.&quot;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>  <span class="c1"># Original data points</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Impact of Regularization on Ridge Regression&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8573b0a9597528cc428a26dce1019a04310df9e9a9d68287f3ebe34bca4c2327.png" src="../_images/8573b0a9597528cc428a26dce1019a04310df9e9a9d68287f3ebe34bca4c2327.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>Synthetic data generation for comparing L1 (Lasso) vs L2 (Ridge):</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">make_regression</span></code> function is used to create a data set for regression tasks:</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_samples=50</span></code>: 50 data points are generated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_features=5</span></code>: The data has 5 features.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n_informative=2</span></code>: Out of the 5 features, only 2 are truly informative (affect the target variable).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">noise=1</span></code>: Adds Gaussian noise to the target variable to make the problem more realistic.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">effective_rank=2</span></code>: Introduces correlations between features by generating a low-rank design matrix.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">coef=True</span></code>: Returns the coefficients of the underlying true model.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.linear_model</span><span class="w"> </span><span class="kn">import</span> <span class="n">Lasso</span><span class="p">,</span> <span class="n">Ridge</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.datasets</span><span class="w"> </span><span class="kn">import</span> <span class="n">make_regression</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Generate synthetic data with redundant features</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">coefficients</span> <span class="o">=</span> <span class="n">make_regression</span><span class="p">(</span>
+    <span class="n">n_samples</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>  <span class="c1"># Number of samples</span>
+    <span class="n">n_features</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>  <span class="c1"># Total features</span>
+    <span class="n">n_informative</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>  <span class="c1"># Only 2 features are informative</span>
+    <span class="n">noise</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c1"># Add some noise</span>
+    <span class="n">effective_rank</span> <span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">coef</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># Return the coefficients for the true model</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">coefficients</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[85.84989327  0.         25.73873511  0.          0.        ]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apply Lasso Regression</span>
+<span class="n">lasso</span> <span class="o">=</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># L1 regularization strength</span>
+<span class="n">lasso</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Apply Ridge Regression</span>
+<span class="n">ridge</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>  <span class="c1"># L2 regularization strength</span>
+<span class="n">ridge</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Plotting side-by-side comparison</span>
+<span class="n">width</span> <span class="o">=</span> <span class="mf">0.25</span>  <span class="c1"># Width of the bars</span>
+<span class="n">x_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">coefficients</span><span class="p">))</span>  <span class="c1"># Indices for features</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># Plot True coefficients</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_indices</span> <span class="o">-</span> <span class="n">width</span><span class="p">,</span> <span class="n">coefficients</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;True Coefficients&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot Lasso coefficients</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_indices</span><span class="p">,</span> <span class="n">lasso</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Lasso Coefficients (L1)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot Ridge coefficients</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x_indices</span> <span class="o">+</span> <span class="n">width</span><span class="p">,</span> <span class="n">ridge</span><span class="o">.</span><span class="n">coef_</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="n">width</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Ridge Coefficients (L2)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add labels and formatting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Feature Index&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Coefficient Value&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Lasso vs Ridge: Side-by-Side Comparison of Coefficients&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">x_indices</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8df34b4bdb01ce0496e14f17cf9a28da47e64fd8a94a278fe79b9e4921ab5fcf.png" src="../_images/8df34b4bdb01ce0496e14f17cf9a28da47e64fd8a94a278fe79b9e4921ab5fcf.png" />
+</div>
+</div>
+<ul class="simple">
+<li><p>When features are highly correlated (as happens with <code class="docutils literal notranslate"><span class="pre">effective_rank=2</span></code>), Ridge struggles to distinguish between them, which can result in suboptimal generalization and interpretation.</p></li>
+<li><p>Lasso regression performs feature selection by setting some coefficients to zero. It eliminates redundant or less important features entirely.</p></li>
+</ul>
+</section>
+<section id="recommended-reading">
+<h2>Recommended Reading<a class="headerlink" href="#recommended-reading" title="Link to this heading">#</a></h2>
+<hr style="border:2px solid gray">
+<ul class="simple">
+<li><p>Chapters 3 and 5 of An Introduction to Statistical Learning With Applications in Python: <a class="reference external" href="https://www.statlearning.com/">https://www.statlearning.com/</a></p></li>
+<li><p>Chapter 4 of Hands-on Machine Learning with Scikit-Learn, Keras and TensorFlow: <a class="github reference external" href="https://github.com/ageron/handson-ml3/blob/main/02_end_to_end_machine_learning_project.ipynb">ageron/handson-ml3</a></p></li>
+<li><p>Chapter 11 of Probabilistic Machine Learning: An Introduction: <a class="reference external" href="https://probml.github.io/pml-book/book1.html">https://probml.github.io/pml-book/book1.html</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "tensorflow"
+        },
+        kernelOptions: {
+            name: "tensorflow",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'tensorflow'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Module2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data Preparation and Validation Techniques</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Module4.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Parametric Classification Models</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Parametric Regression Models</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning-methods">Machine Learning Methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#module-3-parametric-regression-models">Module 3: Parametric Regression Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instructor-farhad-pourkamali">Instructor: Farhad Pourkamali</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-problem-formulation-assumption-loss-function-gradient">1. Linear regression: Problem formulation, assumption, loss function, gradient</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-univariate-linear-regression">Case study: univariate linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-optimization-problem">Solving the optimization problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient">Gradient</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compact-form-of-gradient">Compact form of gradient</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Compact form of gradient</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-models-for-regression">Linear models for regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loss-function-for-linear-regression">Loss function for linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-normal-equation">The Normal equation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-regression-in-scikit-learn">2. Linear regression in Scikit-learn</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluation-metrics">3. Evaluation metrics</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#r2-score-or-the-coefficient-of-determination">R² score or the coefficient of determination</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explained-variance-score">Explained variance score</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gradient-descent-gd-and-variants">4. Gradient descent (GD) and variants</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#batch-gd-for-linear-regression">Batch GD for linear regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stochastic-gradient-descent-sgd-for-linear-regression">Stochastic gradient descent (SGD) for linear regression</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#nonlinear-extension-and-regularization">5. Nonlinear extension and regularization</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bias-variance-tradeoff">The bias-variance tradeoff</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regularization">Regularization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#recommended-reading">Recommended Reading</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Farhad Pourkamali
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026, Farhad Pourkamali.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
